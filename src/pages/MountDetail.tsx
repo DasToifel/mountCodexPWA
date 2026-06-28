@@ -128,6 +128,22 @@ export function MountDetail() {
           </div>
         )}
 
+        {/* Zusatzinfos (nur wenn vorhanden) */}
+        {(mount.comment || mount.requirements || mount.itemId || mount.modelId || mount.internalIds) && (
+          <Card className="p-4">
+            <dl className="space-y-1.5">
+              {mount.requirements && <InfoLine label="Voraussetzungen" value={mount.requirements} />}
+              {mount.comment && <InfoLine label="Kommentar" value={mount.comment} />}
+              {mount.itemId != null && <InfoLine label="Item-ID" value={String(mount.itemId)} />}
+              {mount.modelId != null && <InfoLine label="Modell-ID" value={String(mount.modelId)} />}
+              {mount.internalIds &&
+                Object.entries(mount.internalIds).map(([k, v]) => (
+                  <InfoLine key={k} label={k} value={String(v)} />
+                ))}
+            </dl>
+          </Card>
+        )}
+
         {/* Quellen */}
         <section className="space-y-3">
           <h2 className="text-lg font-bold text-ink">
@@ -195,23 +211,27 @@ export function MountDetail() {
 function SourceCard({ source }: { source: MountSource }) {
   const rows: [string, string | undefined][] = [
     ['Boss', source.boss],
+    ['NPC', source.npc],
     ['Dungeon', source.dungeon],
     ['Schlachtzug', source.raid],
     ['Instanz', source.instance],
-    ['Zone', source.zone],
+    ['Schwierigkeit', source.difficulty],
     ['Kontinent', source.continent],
+    ['Zone', source.zone],
+    ['Unterzone', source.subzone],
     ['Händler', source.vendor],
     ['Kosten', source.cost],
     ['Beruf', source.profession],
     ['Event', source.event],
     ['Erfolg', source.achievement],
+    ['Verfügbarkeit', source.availability],
     ['Voraussetzung', source.requirement],
     ['Fraktion', source.faction ? FACTION_LABEL[source.faction] : undefined],
     ['Dropchance', source.dropChance != null ? formatChance(source.dropChance) : undefined],
     [
       'Koordinaten',
       source.coordinates
-        ? `${source.coordinates.zone} (${source.coordinates.x}, ${source.coordinates.y})`
+        ? `${source.coordinates.zone ? source.coordinates.zone + ' ' : ''}(${source.coordinates.x}, ${source.coordinates.y})`
         : undefined,
     ],
   ]
@@ -238,6 +258,15 @@ function MetaPill({ children }: { children: React.ReactNode }) {
     <span className="rounded-full bg-elevated px-2 py-0.5 text-[11px] text-ink-2">
       {children}
     </span>
+  )
+}
+
+function InfoLine({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="flex gap-3 text-[14px]">
+      <dt className="w-28 shrink-0 capitalize text-ink-3">{label}</dt>
+      <dd className="min-w-0 break-words text-ink">{value}</dd>
+    </div>
   )
 }
 

@@ -134,44 +134,98 @@ async function exists(p) {
  * Baut einen Mount im flachen PWA-Schema. Felder, die das Addon statisch nicht
  * kennt (icon, continent, instance, description, coordinates), bleiben null/leer.
  */
-function makeMount({ id, name, spellId, fields, expansion, patch }) {
-  const sourceText = clean(fields.source)
-  const boss = clean(fields.boss)
-  const type = mapSourceType(fields.source)
+const SOURCE_TYPES = new Set([
+  'drop', 'vendor', 'achievement', 'profession', 'quest', 'event', 'pvp',
+  'worldBoss', 'worldDrop',
+])
 
-  // Händler/Event/Beruf aus den vorhandenen Feldern ableiten (kein Erfinden):
-  // Das Boss-Feld trägt bei diesen Quellen i. d. R. den Händler-/Beruf-/Event-Namen.
-  const vendor = type === 'vendor' ? boss || sourceText : null
-  const profession = type === 'profession' ? boss || sourceText : null
-  const event = type === 'event' ? boss || sourceText : null
+function buildCost(f) {
+  const parts = []
+  if (f.sourcePrice) parts.push(String(f.sourcePrice))
+  if (f.sourceCurrency) parts.push(String(f.sourceCurrency))
+  if (f.currencyRequired) parts.push(String(f.currencyRequired))
+  return parts.length ? parts.join(' ') : null
+}
 
-  // Statisch nicht vorhanden:
-  const missing = ['icon', 'continent', 'coordinates']
+/**
+ * Baut einen Mount im flachen PWA-Schema mit ALLEN aus der Addon-DB ableitbaren
+ * Feldern. Nicht vorhandene Felder bleiben null (UI blendet sie sauber aus).
+ */
+function makeMount({ id, name, spellId, fields: f, expansion, patch, iconName, iconFileId }) {
+  const sourceText = clean(f.source)
+  const boss = clean(f.boss) || clean(f.sourceBoss)
+  const zone = clean(f.zone) || clean(f.sourceZone) || clean(f.sourceLocation)
+  const type = SOURCE_TYPES.has(f.sourceType)
+    ? f.sourceType
+    : SOURCE_TYPES.has(f.acquisitionType)
+      ? f.acquisitionType
+      : mapSourceType(f.source)
+
+  const vendor = clean(f.sourceVendor) || (type === 'vendor' ? boss : null)
+  const profession = clean(f.sourceProfession) || (type === 'profession' ? boss : null)
+  const event = clean(f.sourceEvent) || (type === 'event' ? boss : null)
+  const npc = clean(f.sourceNPC) || null
+  const achievement = clean(f.sourceAchievement) || (type === 'achievement' ? boss : null)
+
+  const internalIds = {}
+  if (f.npcID) internalIds.npcID = Number(f.npcID)
+  if (f.encounterID) internalIds.encounterID = Number(f.encounterID)
+  if (f.sourceCurrencyID) internalIds.currencyID = Number(f.sourceCurrencyID)
+  if (f.sourceCurrencyItemID) internalIds.currencyItemID = Number(f.sourceCurrencyItemID)
+
+  const hasIcon = Boolean(iconName || iconFileId)
+  const missing = []
+  if (!hasIcon) missing.push('icon')
+  if (!zone) missing.push('zone')
 
   return {
     mount: {
+      // Identität
       id,
-      name,
       spellId: spellId ?? null,
-      icon: null,
-      iconFileId: null,
-      expansion: mapExpansion(expansion || fields.expansion),
+      name,
+      description: '',
+      // Icon
+      iconFileId: iconFileId ?? null,
+      iconName: iconName ?? null,
+      icon: iconName ?? null, // Render-Feld (Wowhead by-name)
+      // Einordnung
+      expansion: mapExpansion(expansion || f.expansion),
+      patch: patch || null,
+      rarity: null, // nicht in WoW-API/Addon-DB
+      // Ort
       continent: null,
-      zone: clean(fields.zone),
+      zone,
+      subzone: null,
+      coordinates: null,
+      // Quelle
       source: sourceText,
       sourceType: type,
       boss,
-      instance: null,
+      dungeon: null,
+      raid: null,
+      npc,
       vendor,
-      profession,
       event,
-      patch: patch || null,
-      rarity: null, // in der WoW-API/Addon-DB nicht vorhanden
-      description: '',
-      coordinates: null,
-      faction: mapFaction(fields.faction),
+      profession,
+      achievement,
+      cost: buildCost(f),
+      difficulty: clean(f.sourceDifficulty),
+      availability: clean(f.availabilityStatus),
+      requirements: clean(f.currencyRequired),
+      faction: mapFaction(f.faction),
+      // Zusatz
+      itemId: f.item ? Number(f.item) : f.sourceCurrencyItemID ? Number(f.sourceCurrencyItemID) : null,
+      modelId: null, // nicht in DB (kommt live aus dem Spiel)
+      internalIds: Object.keys(internalIds).length ? internalIds : null,
+      comment: clean(f.sourceNote) || clean(f.guideURL) || null,
+      farmable: f.farmable === 'true' || f.farmable === true ? true : null,
+      // Sync-Vorbereitung (Standardwerte; später vom Addon überschrieben)
       collected: false,
       favorite: false,
+      hidden: false,
+      notes: '',
+      lastSeen: null,
     },
     missing,
   }
@@ -246,6 +300,9 @@ async function runExportMode(savedVarsPath) {
 
   const collected = mounts.filter((x) => x.collected).length
   const withIcon = mounts.filter((x) => x.icon || x.iconFileId || x.iconFileID).length
+  parsed.mountCount = mounts.length
+  parsed.iconCount = withIcon
+  parsed.exportDate = parsed.exportDate || parsed.generatedAt || new Date().toISOString()
   const outDir = join(projectRoot, 'public', 'data')
   await mkdir(outDir, { recursive: true })
   const outPath = join(outDir, 'mounts.json')
@@ -302,6 +359,27 @@ async function main() {
   const { legacy, byId } = parseMountDB(mountText)
   const expansionByMountId = parseNumKeyedTable(expText)
   const patchByMountId = parseNumKeyedTable(patchText)
+
+  // Höchstprioritäre Expansion-Korrekturen.
+  let overrides = new Map()
+  if (await exists(join(addonDir, 'MountExpansionOverrides.lua'))) {
+    overrides = parseNumKeyedTable(await readFile(join(addonDir, 'MountExpansionOverrides.lua'), 'utf8'))
+    usedFiles.push('MountExpansionOverrides.lua')
+  }
+  const expFor = (num, fallback) => overrides.get(num) || fallback || expansionByMountId.get(num)
+
+  // Addon-Version + WoW-Version aus der .toc lesen (für JSON-Meta).
+  let dbVersion = null
+  let wowVersion = null
+  if (await exists(join(addonDir, 'MountCodex.toc'))) {
+    const toc = await readFile(join(addonDir, 'MountCodex.toc'), 'utf8')
+    dbVersion = toc.match(/##\s*Version:\s*(.+)/)?.[1]?.trim() ?? null
+    const iface = toc.match(/##\s*Interface:\s*(\d+)/)?.[1]
+    if (iface) {
+      const n = Number(iface)
+      wowVersion = `${Math.floor(n / 10000)}.${Math.floor(n / 100) % 100}.${n % 100}`
+    }
+  }
 
   // Optionale Namensliste (id → Name/Icon/SpellId).
   let names = {}
@@ -364,7 +442,7 @@ async function main() {
       name: resolvedName || `Reittier #${num}`,
       spellId: resolvedSpellId,
       fields,
-      expansion: fields.expansion || expansionByMountId.get(num),
+      expansion: expFor(num, fields.expansion),
       patch: patchByMountId.get(num) || null,
     })
     track(missing)
@@ -393,7 +471,7 @@ async function main() {
       name: resolvedName || `Reittier #${num}`,
       spellId: typeof nameEntry === 'object' ? (nameEntry.spellId ?? null) : null,
       fields: {}, // keine Quellen-Metadaten vorhanden
-      expansion: expansionByMountId.get(num),
+      expansion: expFor(num),
       patch: patchByMountId.get(num) || null,
     })
     track(missing)
@@ -403,11 +481,16 @@ async function main() {
 
   mounts.sort((a, b) => a.name.localeCompare(b.name))
 
+  const withIcon = mounts.filter((m) => m.icon || m.iconFileId).length
   const output = {
     schema: 'mountcodex/mounts',
     version: 1,
     source: 'mountcodex-addon',
-    generatedAt: new Date().toISOString().slice(0, 10),
+    databaseVersion: dbVersion,
+    wowVersion,
+    exportDate: new Date().toISOString(),
+    mountCount: mounts.length,
+    iconCount: withIcon,
     mounts,
   }
 
@@ -423,8 +506,10 @@ async function main() {
   console.log(`  Nur in Expansion-/PatchDB: ${fromExpPatchOnly}`)
   console.log(`  Ohne Namen:             ${unnamed}${namedOnly ? ' (ausgeschlossen via --named-only)' : ' (als "Reittier #N" aufgenommen)'}`)
   console.log('  Fehlende Felder (Anzahl Mounts):', fieldMissing)
+  console.log(`  Mit Icon: ${withIcon} | Ohne Icon: ${mounts.length - withIcon}`)
+  console.log(`  Addon-Version: ${dbVersion} | WoW: ${wowVersion}`)
   console.log(`  ✓ Geschrieben: ${mounts.length} Mounts → ${outPath}`)
-  console.log('  Hinweis: Icon/collected nur via /mcexport (C_MountJournal).')
+  console.log('  Hinweis: Icon/collected/Modell nur via /mcexport (C_MountJournal).')
 }
 
 main().catch((e) => {

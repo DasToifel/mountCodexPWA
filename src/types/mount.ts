@@ -103,8 +103,12 @@ export interface MountSource {
   dungeon?: string
   raid?: string
   instance?: string
+  npc?: string
   zone?: string
+  subzone?: string
   continent?: string
+  difficulty?: string
+  availability?: string
   dropChance?: number // 0..1
   requirement?: string
   vendor?: string
@@ -121,10 +125,21 @@ export interface Mount {
   name: string
   description: string
   spellId?: number // WoW-SpellID (sofern bekannt)
-  icon?: string // WoW-Icon-Name/-Pfad (kommt im Addon aus der API)
+  icon?: string // Icon-Texturname → Wowhead-CDN
+  iconName?: string // identisch zu icon (Klartext-Feld)
   iconFileId?: number // Blizzard-Icon-FileDataID (aus dem Addon-Export)
   image?: string // URL oder Asset-Pfad; fehlt → prozeduraler Platzhalter
   rarity: Rarity
+
+  // Zusatz (sofern in der Addon-DB vorhanden, sonst undefined)
+  modelId?: number
+  itemId?: number
+  comment?: string
+  requirements?: string
+  internalIds?: Record<string, number>
+  // Sync-Felder (Standardwerte; später vom Addon überschrieben)
+  hidden?: boolean
+  lastSeen?: string | null
 
   // Katalog-Hinweise aus dem Addon-Export. Sie SEEDEN den Nutzerzustand
   // (collected/favorite) beim Laden; die laufende Wahrheit bleibt im
