@@ -91,7 +91,7 @@ export function Settings() {
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={`${FIELD} w-44 text-right`}
+            className={`${FIELD} w-44 max-w-full text-right`}
           />
         </Row>
       </Group>
@@ -235,8 +235,8 @@ const FIELD =
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="flex min-h-[52px] items-center justify-between gap-4 px-4">
-      <span className="text-[15px] text-ink">{label}</span>
-      <div className="flex shrink-0 items-center">{children}</div>
+      <span className="min-w-0 truncate text-[15px] text-ink">{label}</span>
+      <div className="flex min-w-0 items-center justify-end">{children}</div>
     </div>
   )
 }
@@ -266,17 +266,25 @@ function Divider() {
   return <div className="ml-4 h-px bg-separator" />
 }
 
+/**
+ * iOS-Switch ohne Absolutpositionierung: Track = inline-flex mit Padding,
+ * Thumb gleitet per translate. Geometrie: Track 44×24, Padding 2, Thumb 20 →
+ * Weg = 44−2·2−20 = 20px (= translate-x-5). Sitzt dadurch immer bündig in der
+ * Card und ist vertikal automatisch zentriert (kein Überlaufen, kein Hack).
+ */
 function Switch({ on, onToggle }: { on: boolean; onToggle: () => void }) {
   return (
     <button
       onClick={onToggle}
       role="switch"
       aria-checked={on}
-      className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${on ? 'bg-gold' : 'bg-separator'}`}
+      className={`inline-flex h-6 w-11 shrink-0 items-center rounded-full p-0.5 transition-colors ${
+        on ? 'bg-gold' : 'bg-separator'
+      }`}
     >
       <span
-        className={`absolute top-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform ${
-          on ? 'translate-x-5' : 'translate-x-0.5'
+        className={`h-5 w-5 rounded-full bg-white shadow transition-transform duration-200 ${
+          on ? 'translate-x-5' : 'translate-x-0'
         }`}
       />
     </button>
