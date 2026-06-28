@@ -4,9 +4,9 @@ import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import { fileURLToPath, URL } from 'node:url'
 
-// Repo-Name → Pages-URL = <user>.github.io/MountCodexPWA/
+// Repo-Name → Pages-URL = <user>.github.io/mountCodexPWA/
 // `base` MUSS mit dem Repo-Namen übereinstimmen, sonst lädt nichts nach Deploy.
-const REPO_BASE = '/MountCodexPWA/'
+const REPO_BASE = '/mountCodexPWA/'
 
 // https://vite.dev/config/
 export default defineConfig({
