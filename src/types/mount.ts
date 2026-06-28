@@ -38,6 +38,7 @@ export const EXPANSIONS = [
   'Shadowlands',
   'Dragonflight',
   'The War Within',
+  'Midnight',
 ] as const
 
 export type Expansion = (typeof EXPANSIONS)[number]
@@ -54,6 +55,7 @@ export const EXPANSION_SHORT: Record<Expansion, string> = {
   Shadowlands: 'SL',
   Dragonflight: 'DF',
   'The War Within': 'TWW',
+  Midnight: 'MID',
 }
 
 export type Faction = 'alliance' | 'horde' | 'neutral'

@@ -91,7 +91,7 @@ export function Settings() {
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-40 rounded-lg bg-elevated px-2 py-1 text-right text-ink outline-none"
+            className={`${FIELD} w-44 text-right`}
           />
         </Row>
       </Group>
@@ -108,7 +108,7 @@ export function Settings() {
           <select
             value={language}
             onChange={(e) => setLanguage(e.target.value)}
-            className="rounded-lg bg-elevated px-2 py-1 text-ink outline-none"
+            className={FIELD}
           >
             <option value="de">Deutsch</option>
             <option value="en">English</option>
@@ -118,16 +118,11 @@ export function Settings() {
 
       {/* Daten */}
       <Group title="Daten">
-        <button onClick={handleExport} className="w-full p-3 text-left text-[15px] text-ink active:bg-elevated">
-          ⬆️ Sammlung exportieren
-        </button>
+        <RowButton onClick={handleExport}>⬆️ Sammlung exportieren</RowButton>
         <Divider />
-        <button
-          onClick={() => fileRef.current?.click()}
-          className="w-full p-3 text-left text-[15px] text-ink active:bg-elevated"
-        >
+        <RowButton onClick={() => fileRef.current?.click()}>
           ⬇️ Sammlung importieren
-        </button>
+        </RowButton>
         <input
           ref={fileRef}
           type="file"
@@ -140,17 +135,17 @@ export function Settings() {
           }}
         />
         <Divider />
-        <button
+        <RowButton
+          tone="text-danger"
           onClick={() => {
             if (confirm('Wirklich alle Sammeldaten zurücksetzen?')) {
               resetState()
               flash('Zurückgesetzt.')
             }
           }}
-          className="w-full p-3 text-left text-[15px] text-danger active:bg-elevated"
         >
           🗑️ Sammlung zurücksetzen
-        </button>
+        </RowButton>
       </Group>
 
       {/* Mount-Datenbank (Katalog-Import) */}
@@ -163,12 +158,9 @@ export function Settings() {
           <span className="text-[13px] text-ink-3">{catalogMeta?.source ?? '—'}</span>
         </Row>
         <Divider />
-        <button
-          onClick={() => catalogFileRef.current?.click()}
-          className="w-full p-3 text-left text-[15px] text-ink active:bg-elevated"
-        >
+        <RowButton onClick={() => catalogFileRef.current?.click()}>
           📥 Mount-Datenbank importieren (JSON)
-        </button>
+        </RowButton>
         <input
           ref={catalogFileRef}
           type="file"
@@ -181,17 +173,17 @@ export function Settings() {
           }}
         />
         <Divider />
-        <button
+        <RowButton
+          tone="text-danger"
           onClick={() => {
             if (confirm('Importierten Katalog verwerfen und Standarddaten laden?')) {
               void resetCatalog().then(() => flash('Katalog zurückgesetzt.'))
             }
           }}
-          className="w-full p-3 text-left text-[15px] text-danger active:bg-elevated"
         >
           ♻️ Auf Standarddaten zurücksetzen
-        </button>
-        <p className="px-3 pb-3 text-[13px] text-ink-3">
+        </RowButton>
+        <p className="px-4 pb-3 pt-1 text-[13px] text-ink-3">
           Erwartet eine JSON-Datei im Format <code>mountcodex/mounts</code>. Skaliert auf
           tausende Mounts. Spätere Quelle: MountCodex-Addon-Export.
         </p>
@@ -202,7 +194,7 @@ export function Settings() {
         <Row label="Mit MountCodex-Addon">
           <span className="text-[13px] text-ink-3">Bald</span>
         </Row>
-        <p className="px-3 pb-3 text-[13px] text-ink-3">
+        <p className="px-4 pb-3 pt-1 text-[13px] text-ink-3">
           Künftig kannst du den Addon-Export direkt importieren. Das Import/Export-Format
           ist bereits darauf vorbereitet.
         </p>
@@ -232,17 +224,46 @@ function Group({ title, children }: { title: string; children: React.ReactNode }
   )
 }
 
+/**
+ * Einheitliche Höhe + Innenabstände für alle Eingabeelemente (iOS-Look).
+ * Genau EINE Stelle für Feldstyling → keine versetzten Controls.
+ */
+const FIELD =
+  'h-9 rounded-lg bg-elevated px-3 text-[15px] text-ink outline-none focus:ring-2 focus:ring-gold/40'
+
+/** Standard-Zeile: feste Mindesthöhe (44pt-Touchziel +), zentriert. */
 function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="flex items-center justify-between p-3">
+    <div className="flex min-h-[52px] items-center justify-between gap-4 px-4">
       <span className="text-[15px] text-ink">{label}</span>
-      {children}
+      <div className="flex shrink-0 items-center">{children}</div>
     </div>
   )
 }
 
+/** Tippbare Zeile (wie Row, aber als Button) – identische Höhe/Abstände. */
+function RowButton({
+  onClick,
+  children,
+  tone = 'text-ink',
+}: {
+  onClick: () => void
+  children: React.ReactNode
+  tone?: string
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`flex min-h-[52px] w-full items-center gap-3 px-4 text-left text-[15px] active:bg-elevated ${tone}`}
+    >
+      {children}
+    </button>
+  )
+}
+
+/** Trennlinie mit iOS-typischem Einzug (bündig zum Zeilentext). */
 function Divider() {
-  return <div className="h-px bg-separator" />
+  return <div className="ml-4 h-px bg-separator" />
 }
 
 function Switch({ on, onToggle }: { on: boolean; onToggle: () => void }) {
@@ -251,7 +272,7 @@ function Switch({ on, onToggle }: { on: boolean; onToggle: () => void }) {
       onClick={onToggle}
       role="switch"
       aria-checked={on}
-      className={`relative h-7 w-12 rounded-full transition-colors ${on ? 'bg-gold' : 'bg-separator'}`}
+      className={`relative h-7 w-12 shrink-0 rounded-full transition-colors ${on ? 'bg-gold' : 'bg-separator'}`}
     >
       <span
         className={`absolute top-0.5 h-6 w-6 rounded-full bg-white shadow transition-transform ${

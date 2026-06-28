@@ -120,6 +120,31 @@ Alle Quellen laufen durch dieselbe Pipeline `services/mountImport.ts`
 MountCodex-Addon-Export) nur eine neue `DataSource`-Implementierung
 (`RemoteDataSource` liegt bereits bei).
 
+### Aus dem MountCodex-Addon konvertieren (Lua → JSON)
+
+Die mitgelieferte `public/data/mounts.json` wird **aus der echten Addon-DB
+erzeugt** – keine erfundenen Mounts. Der Konverter liest die Lua-Tabellen und
+schreibt das JSON:
+
+```bash
+npm run convert -- --addon "PFAD/ZUM/AddOns/MountCodex"
+# optional: auch id-Einträge ohne Namen aufnehmen ("Reittier #N")
+npm run convert -- --addon "…/MountCodex" --include-unnamed
+```
+
+Gelesen werden `MountCodexMountDB.lua` (Namens- und `mount:`/`spell:`-Einträge),
+`MountCodexExpansionDB.lua` und `MountCodexPatchDB.lua`.
+
+**Namen der id-Einträge:** Die Anzeigenamen der `mount:N`-Einträge liefert im
+Addon das Spiel (C_MountJournal) und stehen **nicht** in den Dateien. Standard­mäßig
+werden daher nur Einträge mit echtem Namen übernommen. Eine im Spiel exportierte
+Namensliste `scripts/mountcodex-names.json` (`{ "2505": "Name", … }`) wird beim
+Konvertieren automatisch eingemischt → dann sind auch alle id-Einträge benannt.
+
+> Nicht in der Addon-DB enthalten (daher leer/Default): Bild, Beschreibung,
+> Seltenheit, Dropchance, Bewegungsart. Der originale Quellentext bleibt als
+> `requirement` erhalten und wird auf der Detailseite angezeigt.
+
 ### Dateiformat (`mountcodex/mounts`)
 
 ```jsonc

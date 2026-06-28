@@ -1,343 +1,6292 @@
 {
   "schema": "mountcodex/mounts",
   "version": 1,
-  "source": "test",
+  "source": "mountcodex-addon",
   "generatedAt": "2026-06-28",
   "mounts": [
     {
-      "id": 31821,
-      "name": "Aschenbringer",
-      "description": "Ein feuriges Ross, das nur die hartnäckigsten Sammler vom Brutwächter Halion erringen.",
-      "rarity": "legendary",
-      "expansion": "Wrath of the Lich King",
-      "patch": "3.3.5",
+      "id": 2020492629,
+      "name": "A.S.M.R. -Prototyp",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The War Within",
       "faction": "neutral",
-      "flying": true,
-      "ground": false,
-      "aquatic": false,
-      "special": ["limitiert"],
-      "sources": [
-        {
-          "type": "drop",
-          "boss": "Halion",
-          "raid": "Die Rubinsanktum",
-          "zone": "Drachenöde",
-          "continent": "Nordend",
-          "dropChance": 0.01,
-          "coordinates": { "zone": "Drachenöde", "x": 56, "y": 58 }
-        }
-      ],
-      "achievements": [],
-      "notes": "Erhöhte Chance im 25er-heroischen Modus.",
-      "tags": ["fliegend", "drache", "raid"]
-    },
-    {
-      "id": 32768,
-      "name": "Reittier der Eisigen Klingen",
-      "description": "Untoter Streitross-Drache, Beute des Lichkönigs selbst.",
-      "rarity": "epic",
-      "expansion": "Wrath of the Lich King",
-      "patch": "3.3.0",
-      "faction": "neutral",
-      "flying": true,
+      "flying": false,
       "ground": false,
       "aquatic": false,
       "special": [],
       "sources": [
         {
-          "type": "drop",
-          "boss": "Der Lichkönig",
-          "raid": "Eiskronenzitadelle",
-          "zone": "Eiskrone",
-          "continent": "Nordend",
-          "dropChance": 0.01
+          "type": "worldDrop",
+          "requirement": "Befreiung von Lorenhall",
+          "faction": "neutral"
         }
       ],
       "achievements": [],
-      "tags": ["fliegend", "untot", "raid"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 60002,
-      "name": "Zügel des Smaragdgrünen Protodrachen",
-      "description": "Belohnung für das Meistern aller Jahreszeit-Feiertage.",
-      "rarity": "epic",
-      "expansion": "Wrath of the Lich King",
-      "patch": "3.0.2",
+      "id": 2063942283,
+      "name": "A.S.M.R.-Prototyp",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The War Within",
       "faction": "neutral",
-      "flying": true,
+      "flying": false,
       "ground": false,
       "aquatic": false,
-      "special": ["erfolgsgebunden"],
+      "special": [],
       "sources": [
         {
-          "type": "achievement",
-          "achievement": "Was für ein langer, seltsamer Trip",
-          "requirement": "Schließe alle Welt-Feiertage über ein Jahr ab."
+          "type": "worldDrop",
+          "requirement": "Befreiung von Lorenhall",
+          "faction": "neutral"
         }
       ],
-      "achievements": ["Was für ein langer, seltsamer Trip"],
-      "tags": ["fliegend", "erfolg", "drache"]
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 64977,
-      "name": "Goldener Lotosdrache",
-      "description": "Vom Händler in Pandaria gegen Ruf und Gold erhältlich.",
+      "id": 2016161061,
+      "name": "Alars Asche",
+      "description": "",
       "rarity": "rare",
-      "expansion": "Mists of Pandaria",
-      "patch": "5.0.4",
+      "expansion": "The Burning Crusade",
       "faction": "neutral",
-      "flying": true,
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Kael'thas",
+          "requirement": "Festung der Stürme"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2075432720,
+      "name": "Amethystfarbener Mechanzug",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
       "ground": false,
       "aquatic": false,
       "special": [],
       "sources": [
         {
           "type": "vendor",
-          "vendor": "San Rotpfote",
-          "zone": "Tal der Vier Winde",
-          "continent": "Pandaria",
-          "cost": "Ehrfürchtig – 5.000 Gold",
-          "requirement": "Ruf 'Ehrfürchtig' bei den Wolkenschlangen."
+          "requirement": "Händler: Lindormi",
+          "faction": "neutral"
         }
       ],
       "achievements": [],
-      "tags": ["fliegend", "händler", "wolkenschlange"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 71086,
-      "name": "Vitreus der Unsterbliche",
-      "description": "Seltene Beute eines Weltbosses in Hallowfall.",
-      "rarity": "epic",
-      "expansion": "The War Within",
-      "patch": "11.0.2",
-      "faction": "neutral",
-      "flying": true,
-      "ground": false,
-      "aquatic": false,
-      "special": ["drachenreiten"],
-      "sources": [
-        {
-          "type": "worldBoss",
-          "boss": "Vitreus",
-          "zone": "Hallowfall",
-          "continent": "Khaz Algar",
-          "dropChance": 0.05,
-          "coordinates": { "zone": "Hallowfall", "x": 41, "y": 62 }
-        }
-      ],
-      "achievements": [],
-      "notes": "Spawnt nur während des Events 'Schimmer der Tiefe'.",
-      "tags": ["fliegend", "weltboss"]
-    },
-    {
-      "id": 88990,
-      "name": "Vizekönigliches Drachenross",
-      "description": "Ingenieurskunst-Mount, gefertigt aus seltenen Drachenisle-Materialien.",
+      "id": 2055876513,
+      "name": "Anu Relos Wegweisung Der Flamme",
+      "description": "",
       "rarity": "rare",
       "expansion": "Dragonflight",
-      "patch": "10.1.0",
       "faction": "neutral",
       "flying": false,
-      "ground": true,
+      "ground": false,
       "aquatic": false,
-      "special": ["mehrsitzig"],
+      "special": [],
       "sources": [
         {
-          "type": "profession",
-          "profession": "Ingenieurskunst (100)",
-          "requirement": "Benötigt seltene Baupläne aus dem Smaragdgrünen Traum."
+          "type": "worldDrop",
+          "boss": "Fyrakk",
+          "zone": "Amirdrassil, Hoffnung des Traums",
+          "requirement": "Amirdrassil",
+          "faction": "neutral"
         }
       ],
       "achievements": [],
-      "tags": ["boden", "beruf", "mechanisch"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 99001,
-      "name": "Wilder Kriegswolf",
-      "description": "Belohnung der PvP-Saison für gewertete Schlachtfelder.",
-      "rarity": "epic",
-      "expansion": "Battle for Azeroth",
-      "patch": "8.0.1",
-      "faction": "horde",
+      "id": 2006396913,
+      "name": "Anurelos Wegweisung Der Flamme",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Dragonflight",
+      "faction": "neutral",
       "flying": false,
-      "ground": true,
+      "ground": false,
       "aquatic": false,
-      "special": ["saisonal"],
+      "special": [],
       "sources": [
         {
-          "type": "pvp",
-          "requirement": "Gewinne gewertete PvP-Matches in der aktuellen Saison.",
+          "type": "worldDrop",
+          "boss": "Fyrakk",
+          "zone": "Amirdrassil, Hoffnung des Traums",
+          "requirement": "Amirdrassil",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2080944630,
+      "name": "Arctic Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
           "faction": "horde"
         }
       ],
       "achievements": [],
-      "tags": ["boden", "pvp", "wolf"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 99500,
-      "name": "Geist des Dunkelmond-Jahrmarkts",
-      "description": "Geisterhafter Tiger, erhältlich gegen Dunkelmond-Preismarken.",
+      "id": 2071719095,
+      "name": "Asche Von Belo'Ren",
+      "description": "",
       "rarity": "rare",
-      "expansion": "Cataclysm",
-      "patch": "4.3.0",
+      "expansion": "Midnight",
       "faction": "neutral",
       "flying": false,
-      "ground": true,
+      "ground": false,
       "aquatic": false,
       "special": [],
       "sources": [
         {
-          "type": "event",
-          "event": "Dunkelmond-Jahrmarkt",
-          "vendor": "Wuwu Hanq",
-          "cost": "180 Dunkelmond-Preismarken"
+          "type": "worldDrop",
+          "requirement": "Marsch auf Quel'Danas",
+          "faction": "neutral"
         }
       ],
       "achievements": [],
-      "notes": "Jahrmarkt öffnet jeden ersten Sonntag im Monat.",
-      "tags": ["boden", "event", "katze"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 41252,
-      "name": "Reittier des Wirbelnden Nexus",
-      "description": "Drop aus der Nexus-Schlüsselsteindungeon.",
+      "id": 2021718936,
+      "name": "Asche Von Beloren",
+      "description": "",
       "rarity": "rare",
-      "expansion": "Wrath of the Lich King",
-      "patch": "3.0.8",
+      "expansion": "Midnight",
       "faction": "neutral",
-      "flying": true,
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Marsch auf Quel'Danas",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2009821385,
+      "name": "Ashes Of Alar",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The Burning Crusade",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Kael'thas",
+          "requirement": "The Eye"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2044269388,
+      "name": "Asmr Prototyp",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The War Within",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Befreiung von Lorenhall",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2001928820,
+      "name": "Baron Rivendare'S Deathcharger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Baron Rivendare",
+          "requirement": "Stratholme",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2057876373,
+      "name": "BernrÜCkenbaumaffe",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Shop",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2040833327,
+      "name": "Bernrueckenbaumaffe",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Shop",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2072471436,
+      "name": "Bissiger Kriegskodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Warlords of Draenor",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "requirement": "PvP: Schrecklicher Sattel",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2013376476,
+      "name": "Bissiger Kriegsroboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Warlords of Draenor",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "requirement": "PvP: Schrecklicher Sattel",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2002066336,
+      "name": "Black Battlestrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2084536959,
+      "name": "Black Qiraji Resonating Crystal",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Legendary Event",
+          "requirement": "Scepter of the Shifting Sands",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2053623145,
+      "name": "Black Stallion",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Unger Statforth",
+          "requirement": "Human - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2068712744,
+      "name": "Black War Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Stone Guard Zarg",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2015104965,
+      "name": "Black War Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2060795023,
+      "name": "Black War Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Stone Guard Zarg",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2083525030,
+      "name": "Black War Tiger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2069070475,
+      "name": "Black War Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Stone Guard Zarg",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2060705127,
+      "name": "Blauer Qirajiresonanzkristall",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash-Drop",
+          "requirement": "Tempel von Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2034201252,
+      "name": "Blauer Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2079564431,
+      "name": "Blaues Skelettpferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Verlassene - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2078719144,
+      "name": "Blaujetonschredderpanzer",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "requirement": "Händler: Lindormi",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2040461786,
+      "name": "Blue Mechanostrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnome - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2016864282,
+      "name": "Blue Qiraji Resonating Crystal",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash Drop",
+          "requirement": "Temple of Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2095084316,
+      "name": "Blue Skeletal Horse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zachariah Post",
+          "requirement": "Undead - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2015259371,
+      "name": "Bluetenrueckenbaumaffe",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Shop",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2075625409,
+      "name": "BlÜTenrÜCkenbaumaffe",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Shop",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2041172184,
+      "name": "Brauner Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2001091240,
+      "name": "Brauner Widder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2099042329,
+      "name": "Braunes Pferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2073583847,
+      "name": "Braunes Schlachtross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Unger Statforth",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2095871395,
+      "name": "Braunes Skelettpferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Verlassene - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2046386856,
+      "name": "Braunfelliger Stacheliger Bakar",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Handelsposten",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2038161115,
+      "name": "Braunfelliger Stachliger Bakar",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Handelsposten",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2093496179,
+      "name": "Brown Horse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Katie Hunter",
+          "requirement": "Human - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2024365721,
+      "name": "Brown Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2013187380,
+      "name": "Brown Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Veron Amberstill",
+          "requirement": "Dwarf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2068897216,
+      "name": "Brown Skeletal Horse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zachariah Post",
+          "requirement": "Undead - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2024723452,
+      "name": "Brown Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2039062846,
+      "name": "Charger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Paladin Quest",
+          "requirement": "Class Mount - Paladin",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2066779003,
+      "name": "Chestnut Mare",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Katie Hunter",
+          "requirement": "Human - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2024326730,
+      "name": "Deathcharger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Baron Rivendare",
+          "requirement": "Stratholme",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2069406513,
+      "name": "Deathcharger'S Reins",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Baron Rivendare",
+          "requirement": "Stratholme",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2070595578,
+      "name": "Dire Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2034135270,
+      "name": "Donnernde Onyxwolkenschlange",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Mists of Pandaria",
+      "faction": "neutral",
+      "flying": false,
       "ground": false,
       "aquatic": false,
       "special": [],
       "sources": [
         {
           "type": "drop",
-          "boss": "Keristrasza",
-          "dungeon": "Der Nexus",
-          "zone": "Boreanische Tundra",
-          "continent": "Nordend",
-          "dropChance": 0.03
+          "boss": "Huolon",
+          "zone": "Zeitlose Insel",
+          "requirement": "Beute von: Huolon (selten)",
+          "faction": "neutral"
         }
       ],
       "achievements": [],
-      "tags": ["fliegend", "dungeon", "drache"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 122888,
-      "name": "Sturmseglerin",
-      "description": "Quest-Belohnung am Ende der Drachenisle-Kampagne.",
-      "rarity": "epic",
-      "expansion": "Dragonflight",
-      "patch": "10.0.0",
+      "id": 2020375124,
+      "name": "Drache Von Onyxia",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
       "faction": "neutral",
-      "flying": true,
+      "flying": false,
       "ground": false,
       "aquatic": false,
-      "special": ["drachenreiten"],
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Onyxia",
+          "requirement": "Onyxias Hort",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2028512009,
+      "name": "Dreadsteed",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Warlock Quest",
+          "requirement": "Class Mount - Warlock",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2043780090,
+      "name": "Eisblauer Roboschreiter Mod. A",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2081408018,
+      "name": "Emerald Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2023295574,
+      "name": "Felsteed",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Warlock Spell",
+          "requirement": "Class Mount - Warlock",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2069361346,
+      "name": "Frost Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2031381053,
+      "name": "Frostsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2040724163,
+      "name": "Frostwidder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2085362707,
+      "name": "Frostwolf Howler",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Frostwolf",
+          "requirement": "PvP - Alteractal",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2000938691,
+      "name": "Frostwolf Snarler",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Frostwolf",
+          "requirement": "PvP - Alteractal",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2093577564,
+      "name": "Gefleckter NachtsÄBler",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2017878097,
+      "name": "Gelber Qirajiresonanzkristall",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash-Drop",
+          "requirement": "Tempel von Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2081671177,
+      "name": "Gescheiterter Flitzopodenprototyp",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Shadowlands",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "profession",
+          "requirement": "Beruf: Protoformsynthese",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2002205376,
+      "name": "Glacial Tidestorm",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Battle for Azeroth",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Jaina",
+          "requirement": "Battle of Dazar'alor"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2087930754,
+      "name": "Gleaming Hawkstrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Midnight",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2036829729,
+      "name": "Gletschergezeitensturm",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Battle for Azeroth",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Jaina",
+          "requirement": "Schlacht von Dazar'alor"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2087251973,
+      "name": "Graublauer Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2025955139,
+      "name": "Grauer Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2036795219,
+      "name": "Grauer Widder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2047444750,
+      "name": "Graues Pferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2042418002,
+      "name": "Graues Schlachtross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Unger Statforth",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2013155212,
+      "name": "Gray Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2006882273,
+      "name": "Gray Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Veron Amberstill",
+          "requirement": "Dwarf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2049890828,
+      "name": "Great Brown Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2053824697,
+      "name": "Great Gray Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2020616441,
+      "name": "Great White Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2098366956,
+      "name": "Green Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2061171729,
+      "name": "Green Mechanostrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnome - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2064274563,
+      "name": "Green Qiraji Resonating Crystal",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash Drop",
+          "requirement": "Temple of Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2089079743,
+      "name": "Green Skeletal Warhorse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zachariah Post",
+          "requirement": "Undead - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2012140688,
+      "name": "GroSSEr Brauner Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2037780619,
+      "name": "GroSSEr Grauer Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2085573478,
+      "name": "GroSSEr WeiSSEr Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Harb Clawhoof",
+          "requirement": "Tauren - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2028617157,
+      "name": "GrÜNer Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2006972968,
+      "name": "GrÜNer Qirajiresonanzkristall",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash-Drop",
+          "requirement": "Tempel von Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2002558147,
+      "name": "GrÜNer Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2048050320,
+      "name": "GrÜNes Skelettpferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Untote - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2073272464,
+      "name": "GrÜNes Skelettschlachtross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Verlassene - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2097945487,
+      "name": "Himmelblauer Todeswandler",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "requirement": "Händler: Lindormi",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2036416097,
+      "name": "Himmelsgolem",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Mists of Pandaria",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "profession",
+          "boss": "Hergestellt",
+          "requirement": "Ingenieurskunst"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2095457186,
+      "name": "Hochrentierlicher Schredderpanzer",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "requirement": "Händler: Lindormi",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2054136670,
+      "name": "Horn Des Arktischen Wolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2077829033,
+      "name": "Horn Des Braunen Wolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2082852231,
+      "name": "Horn Des Frostwolfheulers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Jekyll Flandring",
+          "requirement": "Alteractal / Frostwolfklan",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2091608918,
+      "name": "Horn Des Roten Wolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2040916417,
+      "name": "Horn Des Schnellen Braunen Wolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2072149775,
+      "name": "Horn Des Schnellen Grauwolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2040555148,
+      "name": "Horn Des Schnellen Waldwolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2016397082,
+      "name": "Horn Des Schwarzen Kriegswolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Räuber Bork",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2099574818,
+      "name": "Horn Des Terrorwolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2079846516,
+      "name": "Horn Des Waldwolfs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2095212990,
+      "name": "Huepferprototyp",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Shadowlands",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "profession",
+          "requirement": "Beruf: Protoformsynthese",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2051761242,
+      "name": "HÜPferprototyp",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Shadowlands",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "profession",
+          "requirement": "Beruf: Protoformsynthese",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2028657340,
+      "name": "Icy Blue Mechanostrider Mod A",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2025079327,
+      "name": "Invincible",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Wrath of the Lich King",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "The Lich King",
+          "requirement": "Icecrown Citadel"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2006446432,
+      "name": "Invincibles ZÜGel",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Wrath of the Lich King",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Der Lichkönig",
+          "requirement": "Eiskronenzitadelle"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2071135725,
+      "name": "Ivory Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2028295982,
+      "name": "Kastanienbraune Stute",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2065719415,
+      "name": "Klarer Alptraum",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Legion",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Rätsel",
+          "requirement": "Geheimnis"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2084144664,
+      "name": "Kriegsbaerenmutter Der Bleichborken",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Ritualstätte: Der Zerschlagne Thron",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2000661970,
+      "name": "KriegsbÄRenmutter Der Bleichborken",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Ritualstätte: Der Zerschlagne Thron",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2053451002,
+      "name": "Leerenberuhrter Schnappdrache",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Ritualstätte: Säbelflossenspitze",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2096755475,
+      "name": "LeerenberÜHrter Schnappdrache",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Ritualstätte: Säbelflossenspitze",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2030694431,
+      "name": "Leerenverderbter Hexadler",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Ritualstätte: Der Zerschlagene Thron",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2058106561,
+      "name": "Leerenverderbter Luchs",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "drop",
+          "requirement": "Schätze und seltene Beute",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2071181333,
+      "name": "Leuchtender Falkenschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Midnight",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2071007898,
+      "name": "Loyalistenruntzid",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Handelsposten",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2039170068,
+      "name": "Lucid Nightmare",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Legion",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Puzzle",
+          "requirement": "Secret"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2054104272,
+      "name": "Midnight",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Legion",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Attumen",
+          "requirement": "Return to Karazhan"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2049821683,
+      "name": "Mitternacht",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Legion",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Attumen",
+          "requirement": "Rückkehr nach Karazhan"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2074991964,
+      "name": "Mottled Red Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2011274601,
+      "name": "Nightsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2009490533,
+      "name": "Onyxian Drake",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Onyxia",
+          "requirement": "Onyxia's Lair",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2003421984,
+      "name": "Otto",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Dragonflight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
       "sources": [
         {
           "type": "quest",
-          "zone": "Die Dracheninseln",
-          "continent": "Dracheninseln",
-          "requirement": "Schließe die Drachenflug-Kampagne ab."
+          "boss": "Otto",
+          "requirement": "Quest"
         }
       ],
       "achievements": [],
-      "tags": ["fliegend", "quest", "drachenflug"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 23161,
-      "name": "Zügel des Glückseligen Netherrochens",
-      "description": "Welt-Drop von den Nethersturm-Mantas.",
+      "id": 2082261114,
+      "name": "Painted Horse",
+      "description": "",
       "rarity": "rare",
-      "expansion": "The Burning Crusade",
-      "patch": "2.1.0",
-      "faction": "neutral",
-      "flying": true,
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
       "ground": false,
       "aquatic": false,
       "special": [],
       "sources": [
         {
           "type": "worldDrop",
-          "zone": "Nethersturm",
-          "continent": "Scherbenwelt",
-          "dropChance": 0.008
+          "boss": "Katie Hunter",
+          "requirement": "Human - Vendor",
+          "faction": "alliance"
         }
       ],
       "achievements": [],
-      "tags": ["fliegend", "weltdrop", "rochen"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 130965,
-      "name": "Tiefenseeschildkröte",
-      "description": "Geduldig erangelt aus den Gewässern von Azeroth.",
+      "id": 2012583825,
+      "name": "Palomino",
+      "description": "",
       "rarity": "rare",
-      "expansion": "Cataclysm",
-      "patch": "4.0.3",
-      "faction": "neutral",
+      "expansion": "Classic",
+      "faction": "alliance",
       "flying": false,
       "ground": false,
-      "aquatic": true,
-      "special": ["wassergebunden"],
+      "aquatic": false,
+      "special": [],
       "sources": [
         {
           "type": "worldDrop",
-          "zone": "Diverse Gewässer",
-          "continent": "Azeroth",
-          "dropChance": 0.0005,
-          "requirement": "Angeln in offenen Gewässern."
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
         }
       ],
       "achievements": [],
-      "notes": "Eine der geringsten Dropchancen im Spiel.",
-      "tags": ["wasser", "angeln", "schildkröte"]
+      "tags": [
+        "quelle:addon-name"
+      ]
     },
     {
-      "id": 142236,
-      "name": "Lichtgeschmiedeter Wächter",
-      "description": "Erfolgsmount für das Durchspielen sämtlicher Legion-Schlachtzüge.",
-      "rarity": "epic",
-      "expansion": "Legion",
-      "patch": "7.3.5",
-      "faction": "neutral",
-      "flying": true,
-      "ground": true,
+      "id": 2084833293,
+      "name": "Palominozaumzeug",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
       "aquatic": false,
-      "special": ["rüstbar"],
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2007232085,
+      "name": "Pfeife Des Elfenbeinfarbenen Raptors",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2053202190,
+      "name": "Pfeife Des Scheckigen Roten Raptors",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2078725868,
+      "name": "Pfeife Des Schwarzen Kriegsraptors",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Räuber Bork",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2058656248,
+      "name": "Pfeife Des Smaragdfarbenen Raptors",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2018539866,
+      "name": "Pfeife Des TÜRkisfarbenen Raptors",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2092253350,
+      "name": "Pfeife Des Violetten Raptors",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2083101566,
+      "name": "Phasenverlorener Schieferrucken",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The War Within",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
       "sources": [
         {
           "type": "achievement",
-          "achievement": "Der Bewahrer der Geheimnisse"
-        }
-      ],
-      "achievements": ["Der Bewahrer der Geheimnisse"],
-      "tags": ["fliegend", "erfolg", "konstrukt"]
-    },
-    {
-      "id": 155741,
-      "name": "Seelenschwinge der Schattenlande",
-      "description": "Selten droppendes Mount aus den Schlachtzügen von Shadowlands.",
-      "rarity": "legendary",
-      "expansion": "Shadowlands",
-      "patch": "9.1.0",
-      "faction": "neutral",
-      "flying": true,
-      "ground": false,
-      "aquatic": false,
-      "special": ["limitiert"],
-      "sources": [
-        {
-          "type": "drop",
-          "boss": "Kel'Thuzad",
-          "raid": "Schloss Nathria",
-          "zone": "Revendreth",
-          "continent": "Schattenlande",
-          "dropChance": 0.012
+          "requirement": "Erfolg: Phasen-gefunden-und-verloren",
+          "faction": "neutral"
         }
       ],
       "achievements": [],
-      "tags": ["fliegend", "raid", "seele"]
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2007776901,
+      "name": "Phasenverlorener SchieferrÜCken",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The War Within",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "achievement",
+          "requirement": "Erfolg: Phasen-gefunden-und-verloren",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2011632126,
+      "name": "Profitgruener Schredderpanzer",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "requirement": "Händler: Lindormi",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2054797712,
+      "name": "ProfitgrÜNer Schredderpanzer",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "requirement": "Händler: Lindormi",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2089461560,
+      "name": "Purple Skeletal Warhorse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zachariah Post",
+          "requirement": "Undead - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2001176897,
+      "name": "Purpurnes Skelettschlachtross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Verlassene - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2096142156,
+      "name": "Quantenrenner",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Dragonflight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Chronolord Deios",
+          "requirement": "Dämmerung des Unendlichen"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2096815026,
+      "name": "Quantum Courser",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Dragonflight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Chrono-Lord Deios",
+          "requirement": "Dawn of the Infinite"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2008269585,
+      "name": "Rache",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Shadowlands",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Sylvanas",
+          "requirement": "Sanktum der Herrschaft"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2075338452,
+      "name": "Rappenzaumzeug",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Unger Statforth",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2075569773,
+      "name": "Rebellenruntzid",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Handelsposten",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2039275203,
+      "name": "Red Mechanostrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnome - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2090730129,
+      "name": "Red Qiraji Resonating Crystal",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash Drop",
+          "requirement": "Temple of Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2093897733,
+      "name": "Red Skeletal Horse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zachariah Post",
+          "requirement": "Undead - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2039886029,
+      "name": "Red Skeletal Warhorse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2051564161,
+      "name": "Red Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2090738040,
+      "name": "Reins Of The Winterspring Frostsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Winterspring",
+          "requirement": "Reputation - Wintersaber Trainers",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2074470830,
+      "name": "Roter Qirajiresonanzkristall",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash-Drop",
+          "requirement": "Tempel von Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2044984957,
+      "name": "Roter Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2022963094,
+      "name": "Rotes Skelettpferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Verlassene - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2009869514,
+      "name": "Rotes Skelettschlachtross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Räuber Bork",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2026817458,
+      "name": "Sandsteindrache",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Cataclysm",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Hergestellt",
+          "requirement": "Alchemie"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2099453614,
+      "name": "Sandstone Drake",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Cataclysm",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Crafted",
+          "requirement": "Alchemy"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2017147792,
+      "name": "Schecke",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2059199124,
+      "name": "Schimmelzaumzeug",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2059961448,
+      "name": "Schlachtross BeschwÖRen",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Klassenmount - Paladin",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2045215111,
+      "name": "Schneller Blauer Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2002018035,
+      "name": "Schneller Brauner",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2048356556,
+      "name": "Schneller Brauner Widder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2081151390,
+      "name": "Schneller Gelber Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2097824431,
+      "name": "Schneller Grauer Widder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2003268071,
+      "name": "Schneller GrÜNer Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2070172224,
+      "name": "Schneller NachtsÄBler",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2051394855,
+      "name": "Schneller Olivfarbener Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2041220749,
+      "name": "Schneller Orangener Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2064496668,
+      "name": "Schneller Razzashiraptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Blutfürst Mandokir",
+          "requirement": "Zul'Gurub",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2082410293,
+      "name": "Schneller Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2027554710,
+      "name": "Schneller Roter Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2035468741,
+      "name": "Schneller Smaragdraptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2056591192,
+      "name": "Schneller Violetter Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2086135726,
+      "name": "Schneller WeiSSEr Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2073964234,
+      "name": "Schneller WeiSSEr Widder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2015560036,
+      "name": "Schneller Zulianischer Tiger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Hohepriester Thekal",
+          "requirement": "Zul'Gurub",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2025448044,
+      "name": "Schnelles Blaues Skelettpferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2053492326,
+      "name": "Schnelles Braunes Skelettpferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Untote - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2010589163,
+      "name": "Schnelles Graues Skelettpferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zachariah Post",
+          "requirement": "Untote - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2087835348,
+      "name": "Schnelles Palomino",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2066013448,
+      "name": "Schnelles WeiSSEs Ross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2066343311,
+      "name": "Schreckensross Herbeirufen",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Klassenmount - Hexenmeister",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2040263495,
+      "name": "Schwarzer Kriegskodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Räuber Bork",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2002444014,
+      "name": "Schwarzer Kriegsraptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Stone Guard Zarg",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2076493451,
+      "name": "Schwarzer Kriegsschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2052604759,
+      "name": "Schwarzer Kriegswidder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2040621226,
+      "name": "Schwarzer Kriegswolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Stone Guard Zarg",
+          "requirement": "PvP-Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2073366587,
+      "name": "Schwarzer Qirajiresonanzkristall",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Legendäres Event",
+          "requirement": "Das Szepter der Sandstürme",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2033103695,
+      "name": "Schwarzer Schlachtenschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2075301992,
+      "name": "Schwarzer Widder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2074842915,
+      "name": "Schwarzes Schlachtrosszaumzeug",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2026711405,
+      "name": "Sky Golem",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Mists of Pandaria",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Crafted",
+          "requirement": "Engineering"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2074439529,
+      "name": "Smaragdraptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2051671081,
+      "name": "Spekulativer Schredderpanzer",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "requirement": "Händler: Lindormi",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2002983148,
+      "name": "Spotted Frostsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Lelanai",
+          "requirement": "Night Elf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2068770298,
+      "name": "Stormpike Battle Charger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Stormpike",
+          "requirement": "PvP - Alteractal",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2099739098,
+      "name": "Stormpike Battle Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Stormpike",
+          "requirement": "PvP - Alteractal",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2087355211,
+      "name": "Streitross BeschwÖRen",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Klassenmount - Paladin",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2069718987,
+      "name": "Streitwidder Der Stormpike",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Thanthaldis Snowgleam",
+          "requirement": "Alteractal / Stormpikewache",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2008685894,
+      "name": "Striped Frostsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Lelanai",
+          "requirement": "Night Elf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2088579442,
+      "name": "Striped Nightsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Lelanai",
+          "requirement": "Night Elf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2092559615,
+      "name": "Summon Charger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Class Mount - Paladin",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2023788456,
+      "name": "Summon Dreadsteed",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Class Mount - Warlock",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2097447605,
+      "name": "Summon Felsteed",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Class Mount - Warlock",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2066884948,
+      "name": "Summon Warhorse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Class Mount - Paladin",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2047531663,
+      "name": "Swift Blue Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2008617831,
+      "name": "Swift Brown Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2004005580,
+      "name": "Swift Brown Steed",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Katie Hunter",
+          "requirement": "Human - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2067315241,
+      "name": "Swift Brown Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2073972842,
+      "name": "Swift Frostsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Lelanai",
+          "requirement": "Night Elf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2080603726,
+      "name": "Swift Gray Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2008943394,
+      "name": "Swift Gray Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2006823678,
+      "name": "Swift Green Mechanostrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnome - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2053866390,
+      "name": "Swift Nightsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Lelanai",
+          "requirement": "Night Elf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2084659816,
+      "name": "Swift Olive Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2003885179,
+      "name": "Swift Orange Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2086305278,
+      "name": "Swift Palomino",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Katie Hunter",
+          "requirement": "Human - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2013102471,
+      "name": "Swift Razzashi Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Bloodlord Mandokir",
+          "requirement": "Zul'Gurub",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2011447909,
+      "name": "Swift Stormsaber",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Lelanai",
+          "requirement": "Night Elf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2046375502,
+      "name": "Swift Timber Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2041681944,
+      "name": "Swift White Mechanostrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnome - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2029258970,
+      "name": "Swift White Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2016630399,
+      "name": "Swift White Steed",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Katie Hunter",
+          "requirement": "Human - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2093105203,
+      "name": "Swift Yellow Mechanostrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnome - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2043679217,
+      "name": "Swift Zulian Tiger",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "High Priest Thekal",
+          "requirement": "Zul'Gurub",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2032174131,
+      "name": "Teal Kodo",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2042481088,
+      "name": "Teufelsross BeschwÖRen",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Quest",
+          "requirement": "Klassenmount - Hexenmeister",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2046160859,
+      "name": "Timber Wolf",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Ogunaro Wolfrunner",
+          "requirement": "Orc - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2029155816,
+      "name": "Totenschwurs Todesstreitross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Baron Rivendare",
+          "requirement": "Stratholme",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2023638145,
+      "name": "TÜRkisraptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2092614517,
+      "name": "Turquoise Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2080196326,
+      "name": "Umbralk'Arroc",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The War Within",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "The War Within",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2020178493,
+      "name": "Umbralkarroc",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "The War Within",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "The War Within",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2011563194,
+      "name": "Unlackierter Roboschreiter",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnom - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2093050160,
+      "name": "Unpainted Mechanostrider",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Milli Featherwhistle",
+          "requirement": "Gnome - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2085156748,
+      "name": "Vengeance",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Shadowlands",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Sylvanas",
+          "requirement": "Sanctum of Domination"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2090571863,
+      "name": "Violet Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Vendor",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2033914164,
+      "name": "Violetter Raptor",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "horde",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Zjolnir",
+          "requirement": "Troll - Händler",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2092732917,
+      "name": "Warhorse",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Paladin Quest",
+          "requirement": "Class Mount - Paladin",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2020881155,
+      "name": "WeiSSEr Roboschreiter Mod. A",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2007902318,
+      "name": "WeiSSEr Widder",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Veron Amberstill",
+          "requirement": "Zwerg - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2014579347,
+      "name": "WeiSSEs Pferd",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Katie Hunter",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2047303725,
+      "name": "WeiSSEs Schlachtross",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Unger Statforth",
+          "requirement": "Mensch - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2001983118,
+      "name": "White Mechanostrider Mod A",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2001983119,
+      "name": "White Mechanostrider Mod B",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2038861223,
+      "name": "White Ram",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Veron Amberstill",
+          "requirement": "Dwarf - Vendor",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2028779391,
+      "name": "White Stallion",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Original Epic-Mount",
+          "requirement": "Retired / Original Epic Mount",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2066961053,
+      "name": "Winterspring Frost Sabre",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Winterspring",
+          "requirement": "Ruf - Wintersäblerausbilder",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2054287028,
+      "name": "Yellow Qiraji Resonating Crystal",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Trash Drop",
+          "requirement": "Temple of Ahn'Qiraj",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2071607220,
+      "name": "Zankisches Zornross Des Netherfursten",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Legion",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Calydus",
+          "zone": "Die Schreckensnarbe",
+          "requirement": "Verkäufer",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2027838250,
+      "name": "ZÄNkisches Zornross Des NetherfÜRsten",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Legion",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Calydus",
+          "zone": "Die Schreckensnarbe",
+          "requirement": "Verkäufer",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2058102581,
+      "name": "Zauberbiene Des Magisters",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Midnight",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "requirement": "Dekorationsduell",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2065628937,
+      "name": "ZÜGel Des FrostsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2090697105,
+      "name": "ZÜGel Des Gefleckten FrostsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2020951291,
+      "name": "ZÜGel Des Gestreiften FrostsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2002339747,
+      "name": "ZÜGel Des Gestreiften NachtsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2052050097,
+      "name": "ZÜGel Des NachtsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Originales Epic-Mount",
+          "requirement": "Retiriert / Nicht zum Start verfügbar",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2087890737,
+      "name": "ZÜGel Des Schnellen FrostsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2063941487,
+      "name": "ZÜGel Des Schnellen SchattensÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2085666342,
+      "name": "ZÜGel Des Schnellen SturmsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Lelanai",
+          "requirement": "Nachtelf - Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2015453842,
+      "name": "ZÜGel Des Schwarzen Kriegstigers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "pvp",
+          "boss": "Lieutenant Karter",
+          "requirement": "PvP-Händler",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2037813983,
+      "name": "ZÜGel Des Todesstreitrosses",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "boss": "Baron Rivendare",
+          "requirement": "Stratholme",
+          "faction": "neutral"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
+    },
+    {
+      "id": 2031766043,
+      "name": "ZÜGel Des WinterspringfrostsÄBlers",
+      "description": "",
+      "rarity": "rare",
+      "expansion": "Classic",
+      "faction": "alliance",
+      "flying": false,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "boss": "Rivern Frostwind",
+          "requirement": "Quest / Ruf",
+          "faction": "alliance"
+        }
+      ],
+      "achievements": [],
+      "tags": [
+        "quelle:addon-name"
+      ]
     }
   ]
 }

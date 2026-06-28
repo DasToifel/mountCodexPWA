@@ -53,6 +53,7 @@ const EXPANSION_ORDER = [
   'Shadowlands',
   'Dragonflight',
   'The War Within',
+  'Midnight',
 ]
 
 /**
