@@ -7,12 +7,21 @@ import { Card } from '@/components/ui/Card'
 type Theme = 'dark' | 'light'
 
 export function Settings() {
-  const { mounts, exportState, importState, resetState } = useApp()
+  const {
+    mounts,
+    catalogMeta,
+    exportState,
+    importState,
+    resetState,
+    importMounts,
+    resetCatalog,
+  } = useApp()
   const [name, setName] = useLocalStorage('mc.name', 'Abenteurer')
   const [language, setLanguage] = useLocalStorage('mc.language', 'de')
   const [theme, setTheme] = useLocalStorage<Theme>('mc.theme', 'dark')
   const [message, setMessage] = useState<string | null>(null)
   const fileRef = useRef<HTMLInputElement>(null)
+  const catalogFileRef = useRef<HTMLInputElement>(null)
 
   // Theme auf <html> anwenden (Standard: dark).
   useEffect(() => {
@@ -51,6 +60,20 @@ export function Settings() {
       flash('Import erfolgreich.')
     } catch {
       flash('Import fehlgeschlagen – ungültige Datei.')
+    }
+  }
+
+  const handleCatalogImport = async (file: File) => {
+    try {
+      const raw = JSON.parse(await file.text())
+      const summary = await importMounts(raw)
+      flash(
+        `${summary.imported} Mounts importiert` +
+          (summary.warnings.length ? ` (${summary.warnings.length} Warnungen)` : '') +
+          '.',
+      )
+    } catch (e) {
+      flash(e instanceof Error ? `Import fehlgeschlagen: ${e.message}` : 'Import fehlgeschlagen.')
     }
   }
 
@@ -128,6 +151,50 @@ export function Settings() {
         >
           🗑️ Sammlung zurücksetzen
         </button>
+      </Group>
+
+      {/* Mount-Datenbank (Katalog-Import) */}
+      <Group title="Mount-Datenbank">
+        <Row label="Mounts geladen">
+          <span className="text-ink-2">{mounts.length}</span>
+        </Row>
+        <Divider />
+        <Row label="Quelle">
+          <span className="text-[13px] text-ink-3">{catalogMeta?.source ?? '—'}</span>
+        </Row>
+        <Divider />
+        <button
+          onClick={() => catalogFileRef.current?.click()}
+          className="w-full p-3 text-left text-[15px] text-ink active:bg-elevated"
+        >
+          📥 Mount-Datenbank importieren (JSON)
+        </button>
+        <input
+          ref={catalogFileRef}
+          type="file"
+          accept="application/json"
+          className="hidden"
+          onChange={(e) => {
+            const f = e.target.files?.[0]
+            if (f) void handleCatalogImport(f)
+            e.target.value = ''
+          }}
+        />
+        <Divider />
+        <button
+          onClick={() => {
+            if (confirm('Importierten Katalog verwerfen und Standarddaten laden?')) {
+              void resetCatalog().then(() => flash('Katalog zurückgesetzt.'))
+            }
+          }}
+          className="w-full p-3 text-left text-[15px] text-danger active:bg-elevated"
+        >
+          ♻️ Auf Standarddaten zurücksetzen
+        </button>
+        <p className="px-3 pb-3 text-[13px] text-ink-3">
+          Erwartet eine JSON-Datei im Format <code>mountcodex/mounts</code>. Skaliert auf
+          tausende Mounts. Spätere Quelle: MountCodex-Addon-Export.
+        </p>
       </Group>
 
       {/* Synchronisation (Vorbereitung) */}

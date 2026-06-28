@@ -18,6 +18,7 @@ export function MountCard({ mount, width = 132 }: { mount: Mount; width?: number
             src={mount.image}
             alt={mount.name}
             rarity={mount.rarity}
+            seed={mount.id}
             className="aspect-square w-full"
           />
           {collected && (

@@ -1,0 +1,343 @@
+{
+  "schema": "mountcodex/mounts",
+  "version": 1,
+  "source": "test",
+  "generatedAt": "2026-06-28",
+  "mounts": [
+    {
+      "id": 31821,
+      "name": "Aschenbringer",
+      "description": "Ein feuriges Ross, das nur die hartnäckigsten Sammler vom Brutwächter Halion erringen.",
+      "rarity": "legendary",
+      "expansion": "Wrath of the Lich King",
+      "patch": "3.3.5",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": ["limitiert"],
+      "sources": [
+        {
+          "type": "drop",
+          "boss": "Halion",
+          "raid": "Die Rubinsanktum",
+          "zone": "Drachenöde",
+          "continent": "Nordend",
+          "dropChance": 0.01,
+          "coordinates": { "zone": "Drachenöde", "x": 56, "y": 58 }
+        }
+      ],
+      "achievements": [],
+      "notes": "Erhöhte Chance im 25er-heroischen Modus.",
+      "tags": ["fliegend", "drache", "raid"]
+    },
+    {
+      "id": 32768,
+      "name": "Reittier der Eisigen Klingen",
+      "description": "Untoter Streitross-Drache, Beute des Lichkönigs selbst.",
+      "rarity": "epic",
+      "expansion": "Wrath of the Lich King",
+      "patch": "3.3.0",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "drop",
+          "boss": "Der Lichkönig",
+          "raid": "Eiskronenzitadelle",
+          "zone": "Eiskrone",
+          "continent": "Nordend",
+          "dropChance": 0.01
+        }
+      ],
+      "achievements": [],
+      "tags": ["fliegend", "untot", "raid"]
+    },
+    {
+      "id": 60002,
+      "name": "Zügel des Smaragdgrünen Protodrachen",
+      "description": "Belohnung für das Meistern aller Jahreszeit-Feiertage.",
+      "rarity": "epic",
+      "expansion": "Wrath of the Lich King",
+      "patch": "3.0.2",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": ["erfolgsgebunden"],
+      "sources": [
+        {
+          "type": "achievement",
+          "achievement": "Was für ein langer, seltsamer Trip",
+          "requirement": "Schließe alle Welt-Feiertage über ein Jahr ab."
+        }
+      ],
+      "achievements": ["Was für ein langer, seltsamer Trip"],
+      "tags": ["fliegend", "erfolg", "drache"]
+    },
+    {
+      "id": 64977,
+      "name": "Goldener Lotosdrache",
+      "description": "Vom Händler in Pandaria gegen Ruf und Gold erhältlich.",
+      "rarity": "rare",
+      "expansion": "Mists of Pandaria",
+      "patch": "5.0.4",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "vendor",
+          "vendor": "San Rotpfote",
+          "zone": "Tal der Vier Winde",
+          "continent": "Pandaria",
+          "cost": "Ehrfürchtig – 5.000 Gold",
+          "requirement": "Ruf 'Ehrfürchtig' bei den Wolkenschlangen."
+        }
+      ],
+      "achievements": [],
+      "tags": ["fliegend", "händler", "wolkenschlange"]
+    },
+    {
+      "id": 71086,
+      "name": "Vitreus der Unsterbliche",
+      "description": "Seltene Beute eines Weltbosses in Hallowfall.",
+      "rarity": "epic",
+      "expansion": "The War Within",
+      "patch": "11.0.2",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": ["drachenreiten"],
+      "sources": [
+        {
+          "type": "worldBoss",
+          "boss": "Vitreus",
+          "zone": "Hallowfall",
+          "continent": "Khaz Algar",
+          "dropChance": 0.05,
+          "coordinates": { "zone": "Hallowfall", "x": 41, "y": 62 }
+        }
+      ],
+      "achievements": [],
+      "notes": "Spawnt nur während des Events 'Schimmer der Tiefe'.",
+      "tags": ["fliegend", "weltboss"]
+    },
+    {
+      "id": 88990,
+      "name": "Vizekönigliches Drachenross",
+      "description": "Ingenieurskunst-Mount, gefertigt aus seltenen Drachenisle-Materialien.",
+      "rarity": "rare",
+      "expansion": "Dragonflight",
+      "patch": "10.1.0",
+      "faction": "neutral",
+      "flying": false,
+      "ground": true,
+      "aquatic": false,
+      "special": ["mehrsitzig"],
+      "sources": [
+        {
+          "type": "profession",
+          "profession": "Ingenieurskunst (100)",
+          "requirement": "Benötigt seltene Baupläne aus dem Smaragdgrünen Traum."
+        }
+      ],
+      "achievements": [],
+      "tags": ["boden", "beruf", "mechanisch"]
+    },
+    {
+      "id": 99001,
+      "name": "Wilder Kriegswolf",
+      "description": "Belohnung der PvP-Saison für gewertete Schlachtfelder.",
+      "rarity": "epic",
+      "expansion": "Battle for Azeroth",
+      "patch": "8.0.1",
+      "faction": "horde",
+      "flying": false,
+      "ground": true,
+      "aquatic": false,
+      "special": ["saisonal"],
+      "sources": [
+        {
+          "type": "pvp",
+          "requirement": "Gewinne gewertete PvP-Matches in der aktuellen Saison.",
+          "faction": "horde"
+        }
+      ],
+      "achievements": [],
+      "tags": ["boden", "pvp", "wolf"]
+    },
+    {
+      "id": 99500,
+      "name": "Geist des Dunkelmond-Jahrmarkts",
+      "description": "Geisterhafter Tiger, erhältlich gegen Dunkelmond-Preismarken.",
+      "rarity": "rare",
+      "expansion": "Cataclysm",
+      "patch": "4.3.0",
+      "faction": "neutral",
+      "flying": false,
+      "ground": true,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "event",
+          "event": "Dunkelmond-Jahrmarkt",
+          "vendor": "Wuwu Hanq",
+          "cost": "180 Dunkelmond-Preismarken"
+        }
+      ],
+      "achievements": [],
+      "notes": "Jahrmarkt öffnet jeden ersten Sonntag im Monat.",
+      "tags": ["boden", "event", "katze"]
+    },
+    {
+      "id": 41252,
+      "name": "Reittier des Wirbelnden Nexus",
+      "description": "Drop aus der Nexus-Schlüsselsteindungeon.",
+      "rarity": "rare",
+      "expansion": "Wrath of the Lich King",
+      "patch": "3.0.8",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "drop",
+          "boss": "Keristrasza",
+          "dungeon": "Der Nexus",
+          "zone": "Boreanische Tundra",
+          "continent": "Nordend",
+          "dropChance": 0.03
+        }
+      ],
+      "achievements": [],
+      "tags": ["fliegend", "dungeon", "drache"]
+    },
+    {
+      "id": 122888,
+      "name": "Sturmseglerin",
+      "description": "Quest-Belohnung am Ende der Drachenisle-Kampagne.",
+      "rarity": "epic",
+      "expansion": "Dragonflight",
+      "patch": "10.0.0",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": ["drachenreiten"],
+      "sources": [
+        {
+          "type": "quest",
+          "zone": "Die Dracheninseln",
+          "continent": "Dracheninseln",
+          "requirement": "Schließe die Drachenflug-Kampagne ab."
+        }
+      ],
+      "achievements": [],
+      "tags": ["fliegend", "quest", "drachenflug"]
+    },
+    {
+      "id": 23161,
+      "name": "Zügel des Glückseligen Netherrochens",
+      "description": "Welt-Drop von den Nethersturm-Mantas.",
+      "rarity": "rare",
+      "expansion": "The Burning Crusade",
+      "patch": "2.1.0",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": [],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "zone": "Nethersturm",
+          "continent": "Scherbenwelt",
+          "dropChance": 0.008
+        }
+      ],
+      "achievements": [],
+      "tags": ["fliegend", "weltdrop", "rochen"]
+    },
+    {
+      "id": 130965,
+      "name": "Tiefenseeschildkröte",
+      "description": "Geduldig erangelt aus den Gewässern von Azeroth.",
+      "rarity": "rare",
+      "expansion": "Cataclysm",
+      "patch": "4.0.3",
+      "faction": "neutral",
+      "flying": false,
+      "ground": false,
+      "aquatic": true,
+      "special": ["wassergebunden"],
+      "sources": [
+        {
+          "type": "worldDrop",
+          "zone": "Diverse Gewässer",
+          "continent": "Azeroth",
+          "dropChance": 0.0005,
+          "requirement": "Angeln in offenen Gewässern."
+        }
+      ],
+      "achievements": [],
+      "notes": "Eine der geringsten Dropchancen im Spiel.",
+      "tags": ["wasser", "angeln", "schildkröte"]
+    },
+    {
+      "id": 142236,
+      "name": "Lichtgeschmiedeter Wächter",
+      "description": "Erfolgsmount für das Durchspielen sämtlicher Legion-Schlachtzüge.",
+      "rarity": "epic",
+      "expansion": "Legion",
+      "patch": "7.3.5",
+      "faction": "neutral",
+      "flying": true,
+      "ground": true,
+      "aquatic": false,
+      "special": ["rüstbar"],
+      "sources": [
+        {
+          "type": "achievement",
+          "achievement": "Der Bewahrer der Geheimnisse"
+        }
+      ],
+      "achievements": ["Der Bewahrer der Geheimnisse"],
+      "tags": ["fliegend", "erfolg", "konstrukt"]
+    },
+    {
+      "id": 155741,
+      "name": "Seelenschwinge der Schattenlande",
+      "description": "Selten droppendes Mount aus den Schlachtzügen von Shadowlands.",
+      "rarity": "legendary",
+      "expansion": "Shadowlands",
+      "patch": "9.1.0",
+      "faction": "neutral",
+      "flying": true,
+      "ground": false,
+      "aquatic": false,
+      "special": ["limitiert"],
+      "sources": [
+        {
+          "type": "drop",
+          "boss": "Kel'Thuzad",
+          "raid": "Schloss Nathria",
+          "zone": "Revendreth",
+          "continent": "Schattenlande",
+          "dropChance": 0.012
+        }
+      ],
+      "achievements": [],
+      "tags": ["fliegend", "raid", "seele"]
+    }
+  ]
+}

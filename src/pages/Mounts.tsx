@@ -1,10 +1,11 @@
-import { useMemo, useState } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useWindowVirtualizer } from '@tanstack/react-virtual'
 import { useApp } from '@/state/AppContext'
 import {
   EMPTY_FILTERS,
   SORT_LABEL,
   activeFilterCount,
-  filterMounts,
+  filterEntries,
   type CollectionFilter,
   type MountFilters,
   type SortKey,
@@ -12,8 +13,11 @@ import {
 import { SearchBar } from '@/components/ui/SearchBar'
 import { Chip } from '@/components/ui/Chip'
 import { EmptyState } from '@/components/ui/EmptyState'
+import { ErrorState } from '@/components/ui/ErrorState'
+import { MountListSkeleton } from '@/components/ui/Skeleton'
 import { MountRow } from '@/components/mount/MountRow'
 import { FilterSheet } from '@/components/mount/FilterSheet'
+import { haptic } from '@/lib/haptics'
 
 const COLLECTION_TABS: { key: CollectionFilter; label: string }[] = [
   { key: 'all', label: 'Alle' },
@@ -21,16 +25,41 @@ const COLLECTION_TABS: { key: CollectionFilter; label: string }[] = [
   { key: 'missing', label: 'Fehlend' },
 ]
 
+const ROW_ESTIMATE = 84 // px inkl. Abstand
+
 export function Mounts() {
-  const { loading, mounts, collectedSet, favoritesSet } = useApp()
+  const { status, error, searchEntries, collectedSet, favoritesSet, refresh } = useApp()
   const [filters, setFilters] = useState<MountFilters>(EMPTY_FILTERS)
   const [sheetOpen, setSheetOpen] = useState(false)
 
   const results = useMemo(
-    () => filterMounts(mounts, filters, { collected: collectedSet, favorites: favoritesSet }),
-    [mounts, filters, collectedSet, favoritesSet],
+    () =>
+      filterEntries(searchEntries, filters, {
+        collected: collectedSet,
+        favorites: favoritesSet,
+      }),
+    [searchEntries, filters, collectedSet, favoritesSet],
   )
   const activeCount = activeFilterCount(filters)
+
+  // Window-Virtualisierung: nur sichtbare Zeilen im DOM → flüssig bei 1000+.
+  // `scrollMargin` = Abstand der Liste vom Dokument-Anfang, damit beim
+  // Fenster-Scroll die richtigen Zeilen berechnet werden.
+  const listRef = useRef<HTMLDivElement>(null)
+  const [listOffset, setListOffset] = useState(0)
+  useLayoutEffect(() => {
+    if (listRef.current) {
+      setListOffset(listRef.current.getBoundingClientRect().top + window.scrollY)
+    }
+  }, [status, results.length])
+
+  const virtualizer = useWindowVirtualizer({
+    count: results.length,
+    estimateSize: () => ROW_ESTIMATE,
+    overscan: 10,
+    gap: 8,
+    scrollMargin: listOffset,
+  })
 
   return (
     <div className="space-y-3">
@@ -46,7 +75,10 @@ export function Mounts() {
           />
         </div>
         <button
-          onClick={() => setSheetOpen(true)}
+          onClick={() => {
+            haptic('light')
+            setSheetOpen(true)
+          }}
           className="relative rounded-card bg-elevated p-2.5 text-gold"
           aria-label="Filter"
         >
@@ -94,9 +126,11 @@ export function Mounts() {
         </select>
       </div>
 
-      {/* Liste */}
-      {loading ? (
-        <div className="py-20 text-center text-ink-2">Lädt…</div>
+      {/* Inhalt */}
+      {status === 'loading' ? (
+        <MountListSkeleton />
+      ) : status === 'error' ? (
+        <ErrorState message={error ?? undefined} onRetry={refresh} />
       ) : results.length === 0 ? (
         <EmptyState
           title="Keine Mounts gefunden"
@@ -105,10 +139,28 @@ export function Mounts() {
           onAction={activeCount > 0 ? () => setFilters(EMPTY_FILTERS) : undefined}
         />
       ) : (
-        <div className="space-y-2">
-          {results.map((m) => (
-            <MountRow key={m.id} mount={m} />
-          ))}
+        <div ref={listRef}>
+          <div style={{ height: virtualizer.getTotalSize(), position: 'relative' }}>
+            {virtualizer.getVirtualItems().map((vi) => {
+              const mount = results[vi.index]
+              return (
+                <div
+                  key={mount.id}
+                  data-index={vi.index}
+                  ref={virtualizer.measureElement}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    transform: `translateY(${vi.start - virtualizer.options.scrollMargin}px)`,
+                  }}
+                >
+                  <MountRow mount={mount} />
+                </div>
+              )
+            })}
+          </div>
         </div>
       )}
 

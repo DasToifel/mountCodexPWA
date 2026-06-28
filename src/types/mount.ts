@@ -117,7 +117,7 @@ export interface Mount {
   id: number // WoW-kompatible Mount-ID (für späteren Sync)
   name: string
   description: string
-  image?: string // URL oder Asset-Pfad; fehlt → Platzhalter
+  image?: string // URL oder Asset-Pfad; fehlt → prozeduraler Platzhalter
   rarity: Rarity
   expansion: Expansion
   patch?: string
@@ -126,4 +126,37 @@ export interface Mount {
   achievements: string[]
   notes?: string
   tags: string[]
+
+  // Bewegungsart (Fortbewegung)
+  flying: boolean
+  ground: boolean
+  aquatic: boolean
+
+  /** Besonderheiten (z. B. „mehrsitzig“, „rüstbar“, „limitiert“). */
+  special: string[]
+}
+
+/**
+ * Versioniertes Import-Dateiformat. JEDER Mount wird vollständig über JSON
+ * definiert – nichts steht fest im Code. Dieses Format ist zugleich das
+ * Ziel für den späteren automatischen Import (externe Quelle / MountCodex-Addon).
+ *
+ * `schema` + `version` erlauben Migrationen, ohne alte Exporte zu brechen.
+ * Mounts dürfen unvollständig sein – die Import-Pipeline normalisiert sie
+ * (siehe services/mountImport.ts).
+ */
+export const MOUNT_FILE_SCHEMA = 'mountcodex/mounts'
+export const MOUNT_FILE_VERSION = 1
+
+export interface RawMount extends Partial<Mount> {
+  id: number
+  name: string
+}
+
+export interface MountFile {
+  schema: typeof MOUNT_FILE_SCHEMA
+  version: number
+  source?: string // Herkunft, z. B. "addon-export", "wowhead"
+  generatedAt?: string
+  mounts: RawMount[]
 }

@@ -55,24 +55,35 @@ const EXPANSION_ORDER = [
   'The War Within',
 ]
 
-/** Vorberechneter, kleingeschriebener Suchindex eines Mounts. */
-function searchIndex(m: Mount): string {
-  return [
-    m.name,
-    m.description,
-    ...m.tags,
-    ...m.sources.flatMap((s) =>
-      [s.boss, s.dungeon, s.raid, s.zone, s.vendor, s.event, s.profession].filter(
-        Boolean,
-      ),
-    ),
-  ]
-    .join(' ')
-    .toLowerCase()
+/**
+ * Vorberechneter Sucheintrag: Haystack (lowercased) + bestDrop einmal pro
+ * Mount berechnet, nicht bei jedem Tastendruck. Das macht die Live-Suche auch
+ * bei tausenden Mounts schnell – O(n) Scan über bereits fertige Strings.
+ */
+export interface SearchEntry {
+  mount: Mount
+  haystack: string
+  bestDrop: number
 }
 
-function bestDropChance(m: Mount): number {
-  return m.sources.reduce((max, s) => Math.max(max, s.dropChance ?? 0), 0)
+export function buildSearchEntries(mounts: Mount[]): SearchEntry[] {
+  return mounts.map((m) => ({
+    mount: m,
+    haystack: [
+      m.name,
+      m.description,
+      ...m.tags,
+      ...m.special,
+      ...m.sources.flatMap((s) =>
+        [s.boss, s.dungeon, s.raid, s.zone, s.vendor, s.event, s.profession].filter(
+          Boolean,
+        ),
+      ),
+    ]
+      .join(' ')
+      .toLowerCase(),
+    bestDrop: m.sources.reduce((max, s) => Math.max(max, s.dropChance ?? 0), 0),
+  }))
 }
 
 export interface FilterContext {
@@ -80,15 +91,16 @@ export interface FilterContext {
   favorites: Set<number>
 }
 
-/** Wendet alle Filter + Sortierung an. */
-export function filterMounts(
-  mounts: Mount[],
+/** Wendet alle Filter + Sortierung über die vorberechneten Einträge an. */
+export function filterEntries(
+  entries: SearchEntry[],
   f: MountFilters,
   ctx: FilterContext,
 ): Mount[] {
   const q = f.query.trim().toLowerCase()
-  let list = mounts.filter((m) => {
-    if (q && !searchIndex(m).includes(q)) return false
+  const matched = entries.filter((e) => {
+    if (q && !e.haystack.includes(q)) return false
+    const m = e.mount
     if (f.collection === 'collected' && !ctx.collected.has(m.id)) return false
     if (f.collection === 'missing' && ctx.collected.has(m.id)) return false
     if (f.favoritesOnly && !ctx.favorites.has(m.id)) return false
@@ -98,24 +110,27 @@ export function filterMounts(
     return true
   })
 
-  list = [...list].sort((a, b) => {
-    switch (f.sort) {
-      case 'name-asc':
-        return a.name.localeCompare(b.name)
-      case 'name-desc':
-        return b.name.localeCompare(a.name)
-      case 'rarity':
-        return RARITY_ORDER[b.rarity] - RARITY_ORDER[a.rarity]
-      case 'expansion':
-        return (
-          EXPANSION_ORDER.indexOf(a.expansion) - EXPANSION_ORDER.indexOf(b.expansion)
-        )
-      case 'dropchance':
-        return bestDropChance(b) - bestDropChance(a)
-    }
-  })
-
+  const list = matched
+    .sort((ea, eb) => sortCompare(ea, eb, f.sort))
+    .map((e) => e.mount)
   return list
+}
+
+function sortCompare(ea: SearchEntry, eb: SearchEntry, sort: SortKey): number {
+  const a = ea.mount
+  const b = eb.mount
+  switch (sort) {
+    case 'name-asc':
+      return a.name.localeCompare(b.name)
+    case 'name-desc':
+      return b.name.localeCompare(a.name)
+    case 'rarity':
+      return RARITY_ORDER[b.rarity] - RARITY_ORDER[a.rarity]
+    case 'expansion':
+      return EXPANSION_ORDER.indexOf(a.expansion) - EXPANSION_ORDER.indexOf(b.expansion)
+    case 'dropchance':
+      return eb.bestDrop - ea.bestDrop
+  }
 }
 
 export function activeFilterCount(f: MountFilters): number {

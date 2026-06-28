@@ -105,7 +105,62 @@ Safari ▸ Teilen ▸ „Zum Home-Bildschirm“. Startet dann im Vollbild wie ei
 
 ---
 
-## Eigene Daten
+## Daten & Import-System
 
-Mounts liegen in `src/data/mounts.ts` (Typ `Mount`). Neue Einträge dort ergänzen.
-Später ersetzt der Addon-Export diese Quelle über `AddonSyncDataSource`.
+**Keine Daten im Code.** Der Katalog wird zur Laufzeit als JSON geladen und ist
+über ein Import-System ersetzbar – ausgelegt auf **2000+ Mounts**.
+
+Ladereihenfolge (in `state/AppContext.tsx`):
+1. **Importierter Katalog** aus IndexedDB (hat Vorrang).
+2. Sonst gebündelte **`public/data/mounts.json`** über die `DataSource`.
+
+Alle Quellen laufen durch dieselbe Pipeline `services/mountImport.ts`
+(`parseMountFile`): Validierung, Normalisierung, Defaults, Deduplizierung nach
+`id`. Damit ist späterer **automatischer Import** (externe Quelle oder
+MountCodex-Addon-Export) nur eine neue `DataSource`-Implementierung
+(`RemoteDataSource` liegt bereits bei).
+
+### Dateiformat (`mountcodex/mounts`)
+
+```jsonc
+{
+  "schema": "mountcodex/mounts",
+  "version": 1,
+  "source": "addon-export",      // optional
+  "mounts": [
+    {
+      "id": 31821,                // Pflicht (WoW-Mount-ID)
+      "name": "Aschenbringer",    // Pflicht
+      "rarity": "legendary",      // common|uncommon|rare|epic|legendary
+      "expansion": "Wrath of the Lich King",
+      "patch": "3.3.5",
+      "faction": "neutral",       // alliance|horde|neutral
+      "flying": true, "ground": false, "aquatic": false,
+      "special": ["limitiert"],
+      "description": "…",
+      "sources": [
+        { "type": "drop", "boss": "Halion", "raid": "…", "zone": "…",
+          "continent": "…", "dropChance": 0.01,
+          "coordinates": { "zone": "…", "x": 56, "y": 58 } }
+      ],
+      "achievements": [], "notes": "…", "tags": ["drache"]
+    }
+  ]
+}
+```
+
+Fehlende Felder sind erlaubt – die Pipeline ergänzt sinnvolle Defaults und meldet
+Warnungen. **Import per UI:** Einstellungen ▸ Mount-Datenbank ▸ importieren.
+
+> Sammelstatus, Favorit und persönliche Notizen sind **pro Nutzer** und liegen
+> bewusst getrennt im Nutzerzustand (IndexedDB), nicht im Katalog-JSON.
+
+## Performance
+
+- **Virtualisierung** der Mount-Liste (`@tanstack/react-virtual`, Window-Modus) –
+  nur sichtbare Zeilen im DOM, flüssig bei tausenden Einträgen.
+- **Vorberechneter Suchindex** (`buildSearchEntries`) → Live-Suche scannt fertige
+  Strings statt sie pro Tastendruck neu zu bauen.
+- **Code-Splitting**: jede Seite ein eigener Lazy-Chunk (`React.lazy`).
+- **Memoisierung** aller abgeleiteten Listen/Sets im `AppContext`.
+- **Lazy Images** + prozedurale Platzhalter, bis echte Bilder vorliegen.

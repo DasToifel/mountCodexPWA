@@ -1,12 +1,16 @@
 /**
  * Zentraler App-Store (Source of Truth).
  *
- * Vereint statischen Katalog (DataSource) mit dem Nutzerzustand (IndexedDB).
- * Stellt abgeleitete Sets (collected/favorites) und alle Mutationen bereit.
- * Eine Stelle → konsistente Daten, dünne Komponenten.
+ * Vereint Katalog (per JSON geladen, in IndexedDB überschreibbar) mit dem
+ * Nutzerzustand (IndexedDB). Stellt abgeleitete Sets, vorberechneten Suchindex
+ * und alle Mutationen + Import/Export bereit. Eine Stelle → konsistente Daten,
+ * dünne Komponenten.
  *
- * Bewusst Context + Hooks statt externer State-Lib: passt zur Größe der App,
- * keine Zusatzabhängigkeit, klare Datenflüsse.
+ * Ladestrategie Katalog:
+ *   1. Persistierter Katalog in IndexedDB (z. B. nach Import) → hat Vorrang.
+ *   2. Sonst gebündelte JSON über die DataSource (public/data/mounts.json).
+ * So stehen Daten nie fest im Code und lassen sich später durch den
+ * MountCodex-Addon-Export ersetzen.
  */
 import {
   createContext,
@@ -26,15 +30,38 @@ import {
   type UserState,
 } from '@/types/userState'
 import { dataSource } from '@/services/dataSource'
-import { loadUserState, saveUserState } from '@/services/db'
+import { parseMountFile } from '@/services/mountImport'
+import {
+  clearCatalog,
+  loadCatalog,
+  loadCatalogMeta,
+  loadUserState,
+  saveCatalog,
+  saveUserState,
+  type CatalogMeta,
+} from '@/services/db'
+import { buildSearchEntries, type SearchEntry } from '@/lib/search'
 
 const RECENT_MAX = 12
 
+export type LoadStatus = 'loading' | 'ready' | 'error'
+
+export interface ImportSummary {
+  imported: number
+  warnings: string[]
+}
+
 interface AppContextValue {
-  loading: boolean
+  status: LoadStatus
+  error: string | null
+  loading: boolean // Kurzform für status === 'loading'
+
   mounts: Mount[]
   mountById: Map<number, Mount>
+  searchEntries: SearchEntry[]
   farmRoutes: FarmRoute[]
+  catalogMeta: CatalogMeta | null
+
   userState: UserState
   collectedSet: Set<number>
   favoritesSet: Set<number>
@@ -47,82 +74,101 @@ interface AppContextValue {
   exportState: () => ExportBundle
   importState: (bundle: ExportBundle) => void
   resetState: () => void
+
+  // Katalog-Verwaltung (Import-System)
+  importMounts: (raw: unknown) => Promise<ImportSummary>
+  resetCatalog: () => Promise<void>
+  refresh: () => Promise<void>
 }
 
 const AppContext = createContext<AppContextValue | null>(null)
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [loading, setLoading] = useState(true)
+  const [status, setStatus] = useState<LoadStatus>('loading')
+  const [error, setError] = useState<string | null>(null)
   const [mounts, setMounts] = useState<Mount[]>([])
   const [farmRoutes, setFarmRoutes] = useState<FarmRoute[]>([])
+  const [catalogMeta, setCatalogMeta] = useState<CatalogMeta | null>(null)
   const [userState, setUserState] = useState<UserState>(EMPTY_USER_STATE)
 
-  // Verhindert das Überschreiben der DB mit dem leeren Default vor dem Laden.
   const hydrated = useRef(false)
 
-  // Initiales Laden: Katalog + persistierter Nutzerzustand.
-  useEffect(() => {
-    let active = true
-    void (async () => {
-      const [m, r, s] = await Promise.all([
-        dataSource.getMounts(),
+  const applyMounts = useCallback((list: Mount[]) => {
+    setMounts([...list].sort((a, b) => a.name.localeCompare(b.name)))
+  }, [])
+
+  const loadCatalogData = useCallback(async () => {
+    // 1) persistierter Katalog?
+    const persisted = await loadCatalog()
+    if (persisted && persisted.length > 0) {
+      applyMounts(persisted)
+      setCatalogMeta(await loadCatalogMeta())
+      return
+    }
+    // 2) gebündelte Default-Daten über die DataSource.
+    const result = await dataSource.getMounts()
+    applyMounts(result.mounts)
+    setCatalogMeta({
+      count: result.mounts.length,
+      importedAt: new Date().toISOString(),
+      source: result.meta.source ?? 'bundled',
+    })
+  }, [applyMounts])
+
+  const load = useCallback(async () => {
+    setStatus('loading')
+    setError(null)
+    try {
+      const [, routes, state] = await Promise.all([
+        loadCatalogData(),
         dataSource.getFarmRoutes(),
         loadUserState(),
       ])
-      if (!active) return
-      setMounts([...m].sort((a, b) => a.name.localeCompare(b.name)))
-      setFarmRoutes(r)
-      setUserState(s)
+      setFarmRoutes(routes)
+      setUserState(state)
       hydrated.current = true
-      setLoading(false)
-    })()
-    return () => {
-      active = false
+      setStatus('ready')
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Unbekannter Fehler beim Laden.')
+      setStatus('error')
     }
-  }, [])
+  }, [loadCatalogData])
 
-  // Persistenz: jede Änderung des Nutzerzustands speichern (nach Hydration).
+  useEffect(() => {
+    void load()
+  }, [load])
+
+  // Persistenz Nutzerzustand (nach Hydration).
   useEffect(() => {
     if (hydrated.current) void saveUserState(userState)
   }, [userState])
 
+  // --- Abgeleitetes ---
   const mountById = useMemo(
     () => new Map(mounts.map((m) => [m.id, m])),
     [mounts],
   )
-  const collectedSet = useMemo(
-    () => new Set(userState.collected),
-    [userState.collected],
-  )
-  const favoritesSet = useMemo(
-    () => new Set(userState.favorites),
-    [userState.favorites],
-  )
+  const searchEntries = useMemo(() => buildSearchEntries(mounts), [mounts])
+  const collectedSet = useMemo(() => new Set(userState.collected), [userState.collected])
+  const favoritesSet = useMemo(() => new Set(userState.favorites), [userState.favorites])
 
-  // --- Mutationen (immutabel, damit React zuverlässig neu rendert) ---
-
+  // --- Nutzer-Mutationen ---
   const toggleCollected = useCallback((id: number) => {
-    setUserState((s) => {
-      const has = s.collected.includes(id)
-      return {
-        ...s,
-        collected: has
-          ? s.collected.filter((x) => x !== id)
-          : [...s.collected, id],
-      }
-    })
+    setUserState((s) => ({
+      ...s,
+      collected: s.collected.includes(id)
+        ? s.collected.filter((x) => x !== id)
+        : [...s.collected, id],
+    }))
   }, [])
 
   const toggleFavorite = useCallback((id: number) => {
-    setUserState((s) => {
-      const has = s.favorites.includes(id)
-      return {
-        ...s,
-        favorites: has
-          ? s.favorites.filter((x) => x !== id)
-          : [...s.favorites, id],
-      }
-    })
+    setUserState((s) => ({
+      ...s,
+      favorites: s.favorites.includes(id)
+        ? s.favorites.filter((x) => x !== id)
+        : [...s.favorites, id],
+    }))
   }, [])
 
   const setNote = useCallback((id: number, text: string) => {
@@ -136,10 +182,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const markRecent = useCallback((id: number) => {
-    setUserState((s) => {
-      const recent = [id, ...s.recent.filter((x) => x !== id)].slice(0, RECENT_MAX)
-      return { ...s, recent }
-    })
+    setUserState((s) => ({
+      ...s,
+      recent: [id, ...s.recent.filter((x) => x !== id)].slice(0, RECENT_MAX),
+    }))
   }, [])
 
   const exportState = useCallback(
@@ -153,17 +199,51 @@ export function AppProvider({ children }: { children: ReactNode }) {
   )
 
   const importState = useCallback((bundle: ExportBundle) => {
-    // Defensiv mergen, damit unvollständige Importe nicht crashen.
     setUserState({ ...EMPTY_USER_STATE, ...bundle.state })
   }, [])
 
   const resetState = useCallback(() => setUserState(EMPTY_USER_STATE), [])
 
+  // --- Katalog-Verwaltung ---
+  const importMounts = useCallback(
+    async (raw: unknown): Promise<ImportSummary> => {
+      const result = parseMountFile(raw)
+      if (result.mounts.length === 0) {
+        throw new Error(
+          result.warnings[0] ?? 'Keine gültigen Mounts in der Datei gefunden.',
+        )
+      }
+      const meta: CatalogMeta = {
+        count: result.mounts.length,
+        importedAt: new Date().toISOString(),
+        source: result.meta.source ?? 'import',
+      }
+      await saveCatalog(result.mounts, meta)
+      applyMounts(result.mounts)
+      setCatalogMeta(meta)
+      return { imported: result.mounts.length, warnings: result.warnings }
+    },
+    [applyMounts],
+  )
+
+  const resetCatalog = useCallback(async () => {
+    await clearCatalog()
+    await loadCatalogData()
+  }, [loadCatalogData])
+
+  const refresh = useCallback(async () => {
+    await load()
+  }, [load])
+
   const value: AppContextValue = {
-    loading,
+    status,
+    error,
+    loading: status === 'loading',
     mounts,
     mountById,
+    searchEntries,
     farmRoutes,
+    catalogMeta,
     userState,
     collectedSet,
     favoritesSet,
@@ -174,6 +254,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     exportState,
     importState,
     resetState,
+    importMounts,
+    resetCatalog,
+    refresh,
   }
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>

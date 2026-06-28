@@ -6,8 +6,11 @@ import { toPercent } from '@/lib/format'
 import {
   EXPANSIONS,
   EXPANSION_SHORT,
+  RARITIES,
+  RARITY_LABEL,
   SOURCE_LABEL,
   type Expansion,
+  type Rarity,
   type SourceType,
 } from '@/types/mount'
 import { Card } from '@/components/ui/Card'
@@ -49,6 +52,24 @@ export function Collection() {
         <span className="text-ink-3">›</span>
       </Card>
 
+      {/* Nach Seltenheit */}
+      <section className="space-y-3">
+        <SectionHeader title="Nach Seltenheit" />
+        {RARITIES.map((r: Rarity) => {
+          const s = stats.byRarity[r]
+          if (!s || s.total === 0) return null
+          return (
+            <BreakdownRow
+              key={r}
+              label={RARITY_LABEL[r]}
+              collected={s.collected}
+              total={s.total}
+              fillClass={RARITY_FILL[r]}
+            />
+          )
+        })}
+      </section>
+
       {/* Nach Erweiterung */}
       <section className="space-y-3">
         <SectionHeader title="Nach Erweiterung" />
@@ -86,14 +107,24 @@ export function Collection() {
   )
 }
 
+const RARITY_FILL: Record<Rarity, string> = {
+  common: 'bg-common',
+  uncommon: 'bg-uncommon',
+  rare: 'bg-rare',
+  epic: 'bg-epic',
+  legendary: 'bg-legendary',
+}
+
 function BreakdownRow({
   label,
   collected,
   total,
+  fillClass,
 }: {
   label: string
   collected: number
   total: number
+  fillClass?: string
 }) {
   return (
     <Card className="p-4">
@@ -103,7 +134,7 @@ function BreakdownRow({
           {collected}/{total}
         </span>
       </div>
-      <ProgressBar progress={total > 0 ? collected / total : 0} />
+      <ProgressBar progress={total > 0 ? collected / total : 0} fillClass={fillClass} />
     </Card>
   )
 }

@@ -8,6 +8,7 @@ import {
   type MountSource,
 } from '@/types/mount'
 import { formatChance } from '@/lib/format'
+import { haptic } from '@/lib/haptics'
 import { MountImage } from '@/components/mount/MountImage'
 import { RarityBadge } from '@/components/mount/RarityBadge'
 import { Card } from '@/components/ui/Card'
@@ -71,10 +72,25 @@ export function MountDetail() {
           ‹
         </button>
         <div className="absolute right-4 top-4 flex gap-2">
-          <IconToggle active={favorite} onClick={() => toggleFavorite(mount.id)} label="Favorit">
+          <IconToggle
+            active={favorite}
+            onClick={() => {
+              haptic('light')
+              toggleFavorite(mount.id)
+            }}
+            label="Favorit"
+          >
             ★
           </IconToggle>
-          <IconToggle active={collected} onClick={() => toggleCollected(mount.id)} label="Gesammelt" activeClass="text-success">
+          <IconToggle
+            active={collected}
+            onClick={() => {
+              haptic('success')
+              toggleCollected(mount.id)
+            }}
+            label="Gesammelt"
+            activeClass="text-success"
+          >
             ✓
           </IconToggle>
         </div>
@@ -94,6 +110,18 @@ export function MountDetail() {
 
         {mount.description && (
           <p className="text-[15px] leading-relaxed text-ink-2">{mount.description}</p>
+        )}
+
+        {/* Eigenschaften: Bewegungsart + Besonderheiten */}
+        {(mount.flying || mount.ground || mount.aquatic || mount.special.length > 0) && (
+          <div className="flex flex-wrap gap-2">
+            {mount.flying && <PropPill icon="🪽" label="Flugfähig" />}
+            {mount.ground && <PropPill icon="🐾" label="Boden" />}
+            {mount.aquatic && <PropPill icon="🌊" label="Wasser" />}
+            {mount.special.map((s) => (
+              <PropPill key={s} icon="✦" label={s} />
+            ))}
+          </div>
         )}
 
         {/* Quellen */}
@@ -204,6 +232,15 @@ function MetaPill({ children }: { children: React.ReactNode }) {
   return (
     <span className="rounded-full bg-elevated px-2 py-0.5 text-[11px] text-ink-2">
       {children}
+    </span>
+  )
+}
+
+function PropPill({ icon, label }: { icon: string; label: string }) {
+  return (
+    <span className="inline-flex items-center gap-1 rounded-full border border-separator bg-surface px-2.5 py-1 text-[13px] capitalize text-ink">
+      <span aria-hidden>{icon}</span>
+      {label}
     </span>
   )
 }

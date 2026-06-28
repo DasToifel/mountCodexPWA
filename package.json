@@ -11,6 +11,7 @@
     "icons": "node scripts/generate-icons.mjs"
   },
   "dependencies": {
+    "@tanstack/react-virtual": "^3.14.4",
     "framer-motion": "^11.15.0",
     "idb": "^8.0.0",
     "react": "^19.0.0",

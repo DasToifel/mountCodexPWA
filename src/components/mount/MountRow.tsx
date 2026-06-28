@@ -23,6 +23,7 @@ export function MountRow({ mount }: { mount: Mount }) {
           src={mount.image}
           alt={mount.name}
           rarity={mount.rarity}
+          seed={mount.id}
           className="h-14 w-14 shrink-0"
         />
         <div className="min-w-0 flex-1">

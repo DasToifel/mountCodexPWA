@@ -11,7 +11,9 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { MountCard } from '@/components/mount/MountCard'
 import { MountImage } from '@/components/mount/MountImage'
 import { RarityBadge } from '@/components/mount/RarityBadge'
-import { EXPANSION_SHORT } from '@/types/mount'
+import { ProgressBar } from '@/components/ui/ProgressBar'
+import { EXPANSIONS, EXPANSION_SHORT, SOURCE_LABEL, type SourceType } from '@/types/mount'
+import type { Breakdown } from '@/lib/stats'
 
 export function Dashboard() {
   const { loading, mounts, collectedSet, favoritesSet, userState } = useApp()
@@ -134,6 +136,26 @@ export function Dashboard() {
         </div>
       </section>
 
+      {/* Erweiterungsübersicht */}
+      <OverviewSection
+        title="Erweiterungen"
+        entries={EXPANSIONS.map((e) => ({
+          label: EXPANSION_SHORT[e],
+          data: stats.byExpansion[e],
+        }))}
+        onAll={() => navigate('/collection')}
+      />
+
+      {/* Quellenübersicht */}
+      <OverviewSection
+        title="Quellen"
+        entries={(Object.keys(SOURCE_LABEL) as SourceType[]).map((s) => ({
+          label: SOURCE_LABEL[s],
+          data: stats.bySource[s],
+        }))}
+        onAll={() => navigate('/collection')}
+      />
+
       {/* Favoriten */}
       {favorites.length > 0 && (
         <Carousel title="Favoriten" items={favorites} />
@@ -156,6 +178,42 @@ function Carousel({ title, items }: { title: string; items: import('@/types/moun
           <MountCard key={m.id} mount={m} />
         ))}
       </div>
+    </section>
+  )
+}
+
+function OverviewSection({
+  title,
+  entries,
+  onAll,
+}: {
+  title: string
+  entries: { label: string; data?: Breakdown }[]
+  onAll: () => void
+}) {
+  const present = entries
+    .filter((e): e is { label: string; data: Breakdown } => Boolean(e.data && e.data.total > 0))
+    .sort((a, b) => b.data.total - a.data.total)
+    .slice(0, 5)
+
+  if (present.length === 0) return null
+
+  return (
+    <section className="space-y-3">
+      <SectionHeader title={title} actionLabel="Alle" onAction={onAll} />
+      <Card className="space-y-3 p-4">
+        {present.map(({ label, data }) => (
+          <div key={label}>
+            <div className="mb-1 flex items-center justify-between">
+              <span className="text-[14px] text-ink">{label}</span>
+              <span className="text-[12px] text-ink-2">
+                {data.collected}/{data.total}
+              </span>
+            </div>
+            <ProgressBar progress={data.total > 0 ? data.collected / data.total : 0} />
+          </div>
+        ))}
+      </Card>
     </section>
   )
 }

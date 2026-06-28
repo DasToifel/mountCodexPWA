@@ -1,5 +1,5 @@
 /** Berechnung der Sammelstatistik. Reine Funktionen → leicht testbar. */
-import type { Expansion, Mount, SourceType } from '@/types/mount'
+import type { Expansion, Mount, Rarity, SourceType } from '@/types/mount'
 
 export interface Breakdown {
   collected: number
@@ -13,6 +13,7 @@ export interface CollectionStats {
   progress: number // 0..1
   byExpansion: Partial<Record<Expansion, Breakdown>>
   bySource: Partial<Record<SourceType, Breakdown>>
+  byRarity: Partial<Record<Rarity, Breakdown>>
 }
 
 export function computeStats(
@@ -23,6 +24,7 @@ export function computeStats(
   let collectedCount = 0
   const byExpansion: Partial<Record<Expansion, Breakdown>> = {}
   const bySource: Partial<Record<SourceType, Breakdown>> = {}
+  const byRarity: Partial<Record<Rarity, Breakdown>> = {}
 
   for (const mount of mounts) {
     const isCollected = collected.has(mount.id)
@@ -31,6 +33,10 @@ export function computeStats(
     const exp = (byExpansion[mount.expansion] ??= { collected: 0, total: 0 })
     exp.total++
     if (isCollected) exp.collected++
+
+    const rar = (byRarity[mount.rarity] ??= { collected: 0, total: 0 })
+    rar.total++
+    if (isCollected) rar.collected++
 
     const type = mount.sources[0]?.type
     if (type) {
@@ -47,6 +53,7 @@ export function computeStats(
     progress: total > 0 ? collectedCount / total : 0,
     byExpansion,
     bySource,
+    byRarity,
   }
 }
 

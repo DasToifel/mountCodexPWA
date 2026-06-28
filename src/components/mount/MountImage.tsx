@@ -8,11 +8,24 @@ interface Props {
   rarity: Rarity
   className?: string
   rounded?: string
+  /** Stabiler Seed (z. B. Mount-ID) für den prozeduralen Platzhalter. */
+  seed?: number
+}
+
+/** Deterministischer Farbton aus einem String/Seed (0..360). */
+function hue(input: string): number {
+  let h = 0
+  for (let i = 0; i < input.length; i++) h = (h * 31 + input.charCodeAt(i)) >>> 0
+  return h % 360
 }
 
 /**
  * Einheitliche Mount-Bilddarstellung mit seltenheits-gefärbtem Rand.
- * Lazy-Loading + sauberer Platzhalter bei fehlendem/fehlerhaftem Bild.
+ *
+ * Bilder sind noch nicht vorhanden → hochwertiger PROZEDURALER Platzhalter:
+ * ein deterministischer Farbverlauf (stabil pro Mount) mit Initiale. Sobald
+ * echte Bildpfade in den Daten stehen, werden sie automatisch geladen
+ * (lazy + async); fällt das Laden fehl, greift wieder der Platzhalter.
  */
 export function MountImage({
   src,
@@ -20,13 +33,18 @@ export function MountImage({
   rarity,
   className = '',
   rounded = 'rounded-card',
+  seed,
 }: Props) {
   const [failed, setFailed] = useState(false)
   const showImg = src && !failed
 
+  const h = hue(seed != null ? String(seed) : alt)
+  const initial = alt.trim().charAt(0).toUpperCase() || '?'
+  const gradient = `linear-gradient(135deg, hsl(${h} 45% 22%), hsl(${(h + 40) % 360} 55% 12%))`
+
   return (
     <div
-      className={`relative overflow-hidden border-2 ${RARITY_BORDER[rarity]} ${rounded} bg-elevated ${className}`}
+      className={`relative overflow-hidden border-2 ${RARITY_BORDER[rarity]} ${rounded} ${className}`}
     >
       {showImg ? (
         <img
@@ -39,14 +57,19 @@ export function MountImage({
         />
       ) : (
         <div
-          className={`flex h-full w-full items-center justify-center ${RARITY_TEXT[rarity]} opacity-60`}
+          className="flex h-full w-full items-center justify-center"
+          style={{ background: gradient }}
+          aria-label={alt}
         >
-          {/* Schlichtes Reittier-Icon als Platzhalter */}
-          <svg viewBox="0 0 24 24" className="h-1/3 w-1/3" fill="currentColor">
-            <path d="M3 13c0-1.1.9-2 2-2h2l1.5-3A2 2 0 0 1 11.3 7H14l3 4h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1a3 3 0 0 1-6 0H9a3 3 0 0 1-6 0v-4Zm3 3a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" />
-          </svg>
+          <span
+            className={`select-none text-[2.5em] font-black opacity-25 ${RARITY_TEXT[rarity]}`}
+          >
+            {initial}
+          </span>
         </div>
       )}
+      {/* dezenter Glanz oben für „Premium“-Look */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/10 to-transparent" />
     </div>
   )
 }
