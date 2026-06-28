@@ -1,0 +1,114 @@
+@import 'tailwindcss';
+
+/*
+  Designsystem (Tailwind v4, CSS-first).
+  Farben/Radien/Schatten zentral als Theme-Tokens → erzeugen Utilities wie
+  `bg-surface`, `text-gold`, `rounded-card`. Ein Ort für das ganze Look&Feel.
+*/
+@theme {
+  /* Flächen / Hintergründe (Dark-Mode-first) */
+  --color-bg: #0e1116;
+  --color-surface: #181d24;
+  --color-elevated: #20262f;
+  --color-separator: #2c333d;
+
+  /* Marke / Akzent – WoW-Gold */
+  --color-gold: #e6b450;
+  --color-gold-muted: #c8a04a;
+  --color-accent: #4da3ff;
+
+  /* Text */
+  --color-ink: #f5f2ea;
+  --color-ink-2: #a8aeb8;
+  --color-ink-3: #6b7280;
+
+  /* Status */
+  --color-success: #3fb950;
+  --color-warning: #e3a008;
+  --color-danger: #e5534b;
+
+  /* Seltenheit (WoW-Qualitätsfarben) */
+  --color-common: #9d9d9d;
+  --color-uncommon: #1eff00;
+  --color-rare: #0070dd;
+  --color-epic: #a335ee;
+  --color-legendary: #ff8000;
+
+  /* Radien */
+  --radius-card: 1rem;
+  --radius-xl2: 1.5rem;
+
+  /* Schrift */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto,
+    Helvetica, Arial, sans-serif;
+}
+
+/*
+  Optionales Light-Theme. Dark ist Standard (html.dark). Wird die Klasse
+  entfernt bzw. `html.light` gesetzt, überschreiben diese Tokens die Palette.
+*/
+html.light {
+  --color-bg: #f4f2ec;
+  --color-surface: #ffffff;
+  --color-elevated: #ebe7dd;
+  --color-separator: #d9d3c5;
+  --color-ink: #1a1c20;
+  --color-ink-2: #51565f;
+  --color-ink-3: #8a8f99;
+  --color-gold: #b8860b;
+}
+
+/* Safe-Area-Variablen (iPhone Notch / Home-Indicator) */
+:root {
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Overscroll-Glow/Bounce eindämmen für App-Gefühl */
+  overscroll-behavior-y: none;
+}
+
+/* Kein Tap-Highlight (natives App-Gefühl) */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Eigene, dezente Scrollbars (Desktop) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-elevated);
+  border-radius: 999px;
+}
+
+/* Utility: horizontale Scroller ohne Scrollbar (Karussells) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Glassmorphism-Helfer */
+.glass {
+  background: color-mix(in srgb, var(--color-elevated) 70%, transparent);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+}
