@@ -10,20 +10,21 @@ interface Props {
   rounded?: string
   /** Stabiler Seed (z. B. Mount-ID) für den prozeduralen Platzhalter. */
   seed?: number
-  /** Blizzard-Icon-FileDataID aus dem Addon-Export (keine manuelle Pflege). */
+  /** Icon-Texturname (aus FileDataID aufgelöst) → Wowhead-Icon-CDN. */
+  icon?: string
+  /** Blizzard-Icon-FileDataID (Fallback, falls kein Name + eigener Mirror). */
   iconFileId?: number
 }
 
-/**
- * Optionale Icon-CDN-Basis für FileDataIDs (z. B. eigener Mirror).
- * Blizzard bietet ohne Auth keine öffentliche FileID→Bild-URL; daher
- * konfigurierbar über VITE_ICON_BASE. Ist sie gesetzt, wird das echte Icon
- * geladen, sonst greift der prozedurale Platzhalter (kein kaputtes Bild).
- */
+// Wowhead-Icon-CDN (öffentlich, by-name). Aufgelöst aus der FileDataID beim
+// Export (scripts/icons-map.json) → Icons erscheinen automatisch, keine Pflege.
+const WOWHEAD_ICONS = 'https://wow.zamimg.com/images/wow/icons/large/'
+// Optionaler eigener Mirror für reine FileDataIDs (keine öffentliche URL bei Blizzard).
 const ICON_BASE = import.meta.env.VITE_ICON_BASE as string | undefined
 
-function resolveSrc(src?: string, iconFileId?: number): string | undefined {
+function resolveSrc(src?: string, icon?: string, iconFileId?: number): string | undefined {
   if (src) return src
+  if (icon) return `${WOWHEAD_ICONS}${icon}.jpg`
   if (iconFileId && ICON_BASE) return `${ICON_BASE}${iconFileId}.jpg`
   return undefined
 }
@@ -50,10 +51,11 @@ export function MountImage({
   className = '',
   rounded = 'rounded-card',
   seed,
+  icon,
   iconFileId,
 }: Props) {
   const [failed, setFailed] = useState(false)
-  const effectiveSrc = resolveSrc(src, iconFileId)
+  const effectiveSrc = resolveSrc(src, icon, iconFileId)
   const showImg = effectiveSrc && !failed
 
   const h = hue(seed != null ? String(seed) : alt)

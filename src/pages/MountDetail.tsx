@@ -58,6 +58,7 @@ export function MountDetail() {
       <div className="relative">
         <MountImage
           src={mount.image}
+          icon={mount.icon}
           iconFileId={mount.iconFileId}
           alt={mount.name}
           rarity={mount.rarity}

@@ -232,7 +232,20 @@ async function runExportMode(savedVarsPath) {
   }
 
   const mounts = Array.isArray(parsed.mounts) ? parsed.mounts : []
+
+  // Icon-Namen aus FileDataID auflösen (für Wowhead-Anzeige in der PWA).
+  const iconMap = await loadIconMap()
+  let iconResolved = 0
+  for (const x of mounts) {
+    const fid = x.iconFileId ?? x.iconFileID
+    if (!x.icon && fid != null && iconMap[String(fid)]) {
+      x.icon = iconMap[String(fid)]
+      iconResolved++
+    }
+  }
+
   const collected = mounts.filter((x) => x.collected).length
+  const withIcon = mounts.filter((x) => x.icon || x.iconFileId || x.iconFileID).length
   const outDir = join(projectRoot, 'public', 'data')
   await mkdir(outDir, { recursive: true })
   const outPath = join(outDir, 'mounts.json')
@@ -241,8 +254,23 @@ async function runExportMode(savedVarsPath) {
   console.log('MountCodex Export (SavedVariables) → JSON')
   console.log(`  Quelle: ${savedVarsPath}`)
   console.log(`  Mounts: ${mounts.length}`)
+  console.log(`  Mit Icon: ${withIcon} (Namen aufgelöst: ${iconResolved})`)
   console.log(`  Gesammelt: ${collected} | Fehlend: ${mounts.length - collected}`)
   console.log(`  ✓ Geschrieben: ${outPath}`)
+}
+
+/** Lädt die fileDataID→Icon-Name-Map (Community-Listfile, einmalig erzeugt). */
+async function loadIconMap() {
+  const p = join(__dirname, 'icons-map.json')
+  if (!(await exists(p))) {
+    console.warn('⚠ scripts/icons-map.json fehlt – Icons werden nicht aufgelöst.')
+    return {}
+  }
+  try {
+    return JSON.parse(await readFile(p, 'utf8'))
+  } catch {
+    return {}
+  }
 }
 
 async function main() {

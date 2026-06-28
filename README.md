@@ -156,10 +156,21 @@ entpackt es direkt nach `public/data/mounts.json`.
 **Gesammelt-Status:** Mounts mit `"collected": true` werden in der PWA
 automatisch als gesammelt markiert; Fortschritt/Statistik berechnen sich daraus.
 
-**Icons:** Es wird die Blizzard-`iconFileId` exportiert. Da Blizzard ohne Auth
-keine öffentliche FileID→Bild-URL bietet, ist die Bildquelle konfigurierbar:
-`VITE_ICON_BASE` (z. B. eigener Mirror) → `${VITE_ICON_BASE}${iconFileId}.jpg`.
-Ohne Konfiguration greift der prozedurale Platzhalter (keine kaputten Bilder).
+**Icons:** Der Addon-Export liefert die `iconFileId`. Beim `--export` löst der
+Konverter sie über `scripts/icons-map.json` (Community-Listfile, fileDataID→Name)
+zu einem Icon-Namen auf und schreibt ihn als `icon`. Die PWA zeigt das Icon
+automatisch über das öffentliche Wowhead-CDN
+(`wow.zamimg.com/images/wow/icons/large/<name>.jpg`) – **keine manuelle Pflege**.
+Greift kein Name, bleibt der prozedurale Platzhalter (nie kaputte Bilder).
+
+`scripts/icons-map.json` (≈1,4 MB, nur Build-Zeit, nicht im PWA-Bundle) bei
+Bedarf neu erzeugen aus dem Community-Listfile:
+```
+curl -sL https://github.com/wowdev/wow-listfile/releases/latest/download/community-listfile.csv \
+ | grep -i "interface/icons/" > icons.csv
+# dann fileId→Name (ohne .blp) als JSON nach scripts/icons-map.json schreiben
+```
+Optionaler Mirror für reine FileIDs weiterhin via `VITE_ICON_BASE`.
 
 **Namen der id-Einträge:** Die Anzeigenamen der `mount:N`-Einträge liefert im
 Addon das Spiel (C_MountJournal) und stehen **nicht** in den Dateien. Standard­mäßig

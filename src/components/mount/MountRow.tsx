@@ -21,6 +21,7 @@ export function MountRow({ mount }: { mount: Mount }) {
       >
         <MountImage
           src={mount.image}
+          icon={mount.icon}
           iconFileId={mount.iconFileId}
           alt={mount.name}
           rarity={mount.rarity}
