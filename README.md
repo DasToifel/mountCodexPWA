@@ -135,6 +135,32 @@ npm run convert -- --addon "…/MountCodex" --include-unnamed
 Gelesen werden `MountCodexMountDB.lua` (Namens- und `mount:`/`spell:`-Einträge),
 `MountCodexExpansionDB.lua` und `MountCodexPatchDB.lua`.
 
+#### Empfohlen: vollständiger Live-Export aus dem Spiel
+
+Der statische Weg kennt für viele Einträge keine Namen/Icons (die liefert WoW
+erst zur Laufzeit). Für einen **vollständigen** Katalog (echte Namen, Icon-
+FileIDs, gesammelt-Status) den Addon-Exporter nutzen:
+
+```
+1) im Spiel:  /mcexport
+2) /reload    (schreibt SavedVariables)
+3) in der PWA:
+   npm run convert -- --export "…/WTF/Account/<ACC>/SavedVariables/MountCodex.lua"
+```
+
+Der Exporter (`MountCodexExport.lua`) baut das fertige JSON aus
+`C_MountJournal` (Name, Icon-FileDataID, gesammelt, Favorit, Fraktion) plus den
+statischen DBs (Erweiterung, Quelle, Zone, Boss, Patch). Der Konverter
+entpackt es direkt nach `public/data/mounts.json`.
+
+**Gesammelt-Status:** Mounts mit `"collected": true` werden in der PWA
+automatisch als gesammelt markiert; Fortschritt/Statistik berechnen sich daraus.
+
+**Icons:** Es wird die Blizzard-`iconFileId` exportiert. Da Blizzard ohne Auth
+keine öffentliche FileID→Bild-URL bietet, ist die Bildquelle konfigurierbar:
+`VITE_ICON_BASE` (z. B. eigener Mirror) → `${VITE_ICON_BASE}${iconFileId}.jpg`.
+Ohne Konfiguration greift der prozedurale Platzhalter (keine kaputten Bilder).
+
 **Namen der id-Einträge:** Die Anzeigenamen der `mount:N`-Einträge liefert im
 Addon das Spiel (C_MountJournal) und stehen **nicht** in den Dateien. Standard­mäßig
 werden daher nur Einträge mit echtem Namen übernommen. Eine im Spiel exportierte

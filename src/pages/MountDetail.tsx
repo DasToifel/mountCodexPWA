@@ -58,8 +58,10 @@ export function MountDetail() {
       <div className="relative">
         <MountImage
           src={mount.image}
+          iconFileId={mount.iconFileId}
           alt={mount.name}
           rarity={mount.rarity}
+          seed={mount.id}
           rounded="rounded-none"
           className="h-64 w-full"
         />

@@ -10,6 +10,22 @@ interface Props {
   rounded?: string
   /** Stabiler Seed (z. B. Mount-ID) für den prozeduralen Platzhalter. */
   seed?: number
+  /** Blizzard-Icon-FileDataID aus dem Addon-Export (keine manuelle Pflege). */
+  iconFileId?: number
+}
+
+/**
+ * Optionale Icon-CDN-Basis für FileDataIDs (z. B. eigener Mirror).
+ * Blizzard bietet ohne Auth keine öffentliche FileID→Bild-URL; daher
+ * konfigurierbar über VITE_ICON_BASE. Ist sie gesetzt, wird das echte Icon
+ * geladen, sonst greift der prozedurale Platzhalter (kein kaputtes Bild).
+ */
+const ICON_BASE = import.meta.env.VITE_ICON_BASE as string | undefined
+
+function resolveSrc(src?: string, iconFileId?: number): string | undefined {
+  if (src) return src
+  if (iconFileId && ICON_BASE) return `${ICON_BASE}${iconFileId}.jpg`
+  return undefined
 }
 
 /** Deterministischer Farbton aus einem String/Seed (0..360). */
@@ -34,9 +50,11 @@ export function MountImage({
   className = '',
   rounded = 'rounded-card',
   seed,
+  iconFileId,
 }: Props) {
   const [failed, setFailed] = useState(false)
-  const showImg = src && !failed
+  const effectiveSrc = resolveSrc(src, iconFileId)
+  const showImg = effectiveSrc && !failed
 
   const h = hue(seed != null ? String(seed) : alt)
   const initial = alt.trim().charAt(0).toUpperCase() || '?'
@@ -48,7 +66,7 @@ export function MountImage({
     >
       {showImg ? (
         <img
-          src={src}
+          src={effectiveSrc}
           alt={alt}
           loading="lazy"
           decoding="async"

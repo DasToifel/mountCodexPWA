@@ -34,6 +34,8 @@ const projectRoot = resolve(__dirname, '..')
 const args = process.argv.slice(2)
 const namedOnly = args.includes('--named-only')
 const addonArgIdx = args.indexOf('--addon')
+const exportArgIdx = args.indexOf('--export')
+const exportPath = exportArgIdx >= 0 ? args[exportArgIdx + 1] : null
 const DEFAULT_ADDON =
   'D:/Blizzard/World of Warcraft/_retail_/Interface/AddOns/MountCodex'
 const addonDir = addonArgIdx >= 0 ? args[addonArgIdx + 1] : DEFAULT_ADDON
@@ -167,7 +169,80 @@ function makeMount({ id, name, spellId, fields, expansion, patch }) {
   }
 }
 
+/**
+ * Wandelt einen Lua-String-Literal-Inhalt zurück in echten Text.
+ * WoW-SavedVariables escapen Nicht-ASCII als `\ddd` (dezimale BYTES) – daher
+ * auf Byte-Ebene sammeln und als UTF-8 dekodieren (korrekte Umlaute).
+ */
+function unescapeLuaString(s) {
+  const bytes = []
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i]
+    if (ch === '\\') {
+      const next = s[i + 1]
+      const dec = s.slice(i + 1).match(/^\d{1,3}/)
+      if (dec) {
+        bytes.push(parseInt(dec[0], 10) & 0xff)
+        i += dec[0].length
+      } else {
+        const map = { n: 10, r: 13, t: 9, a: 7, b: 8, f: 12, v: 11 }
+        bytes.push(map[next] ?? next.charCodeAt(0)) // \\ \" usw.
+        i += 1
+      }
+    } else {
+      // Rohzeichen (ggf. mehrbyte UTF-8) korrekt in Bytes zerlegen.
+      const enc = Buffer.from(ch, 'utf8')
+      for (const b of enc) bytes.push(b)
+    }
+  }
+  return Buffer.from(bytes).toString('utf8')
+}
+
+/**
+ * Export-Modus: liest die vom Addon erzeugte SavedVariable
+ * `MountCodexExportJSON = "...."` und schreibt deren JSON direkt als mounts.json.
+ * Das ist der bevorzugte Weg – fertige Live-Daten (Namen, Icons, gesammelt).
+ */
+async function runExportMode(savedVarsPath) {
+  if (!(await exists(savedVarsPath))) {
+    console.error(`\n✗ Export-Datei nicht gefunden: ${savedVarsPath}\n`)
+    process.exit(1)
+  }
+  const raw = await readFile(savedVarsPath, 'utf8')
+  const m = raw.match(/MountCodexExportJSON\s*=\s*"([\s\S]*?)"\s*(?:\r?\n|$)/)
+  if (!m) {
+    console.error('\n✗ MountCodexExportJSON in der Datei nicht gefunden. Erst /mcexport + /reload im Spiel.\n')
+    process.exit(1)
+  }
+  const jsonText = unescapeLuaString(m[1])
+  let parsed
+  try {
+    parsed = JSON.parse(jsonText)
+  } catch (e) {
+    console.error('\n✗ Eingebettetes JSON ist ungültig:', e.message, '\n')
+    process.exit(1)
+  }
+
+  const mounts = Array.isArray(parsed.mounts) ? parsed.mounts : []
+  const collected = mounts.filter((x) => x.collected).length
+  const outDir = join(projectRoot, 'public', 'data')
+  await mkdir(outDir, { recursive: true })
+  const outPath = join(outDir, 'mounts.json')
+  await writeFile(outPath, JSON.stringify(parsed, null, 2) + '\n', 'utf8')
+
+  console.log('MountCodex Export (SavedVariables) → JSON')
+  console.log(`  Quelle: ${savedVarsPath}`)
+  console.log(`  Mounts: ${mounts.length}`)
+  console.log(`  Gesammelt: ${collected} | Fehlend: ${mounts.length - collected}`)
+  console.log(`  ✓ Geschrieben: ${outPath}`)
+}
+
 async function main() {
+  if (exportPath) {
+    await runExportMode(exportPath)
+    return
+  }
+
   const mountDBPath = join(addonDir, 'MountCodexMountDB.lua')
   if (!(await exists(mountDBPath))) {
     console.error(`\n✗ Addon nicht gefunden: ${mountDBPath}\n  Pfad per --addon "<Ordner>" angeben.\n`)

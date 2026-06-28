@@ -16,6 +16,7 @@ export function MountCard({ mount, width = 132 }: { mount: Mount; width?: number
         <div className="relative">
           <MountImage
             src={mount.image}
+            iconFileId={mount.iconFileId}
             alt={mount.name}
             rarity={mount.rarity}
             seed={mount.id}

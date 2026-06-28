@@ -122,8 +122,15 @@ export interface Mount {
   description: string
   spellId?: number // WoW-SpellID (sofern bekannt)
   icon?: string // WoW-Icon-Name/-Pfad (kommt im Addon aus der API)
+  iconFileId?: number // Blizzard-Icon-FileDataID (aus dem Addon-Export)
   image?: string // URL oder Asset-Pfad; fehlt → prozeduraler Platzhalter
   rarity: Rarity
+
+  // Katalog-Hinweise aus dem Addon-Export. Sie SEEDEN den Nutzerzustand
+  // (collected/favorite) beim Laden; die laufende Wahrheit bleibt im
+  // IndexedDB-Nutzerzustand (siehe AppContext).
+  collected?: boolean
+  favorite?: boolean
   expansion: Expansion
   patch?: string
   faction: Faction

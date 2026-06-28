@@ -149,8 +149,21 @@ export function AppProvider({ children }: { children: ReactNode }) {
     [mounts],
   )
   const searchEntries = useMemo(() => buildSearchEntries(mounts), [mounts])
-  const collectedSet = useMemo(() => new Set(userState.collected), [userState.collected])
-  const favoritesSet = useMemo(() => new Set(userState.favorites), [userState.favorites])
+
+  // collected/favorite = Addon-Export-Hinweise (m.collected/m.favorite) VEREINT
+  // mit dem persistierten Nutzerzustand. So markiert ein frischer Export
+  // gesammelte Mounts automatisch; eigene Markierungen bleiben zusätzlich
+  // erhalten. Fortschritt/Statistik werden daraus berechnet.
+  const collectedSet = useMemo(() => {
+    const s = new Set(userState.collected)
+    for (const m of mounts) if (m.collected) s.add(m.id)
+    return s
+  }, [userState.collected, mounts])
+  const favoritesSet = useMemo(() => {
+    const s = new Set(userState.favorites)
+    for (const m of mounts) if (m.favorite) s.add(m.id)
+    return s
+  }, [userState.favorites, mounts])
 
   // --- Nutzer-Mutationen ---
   const toggleCollected = useCallback((id: number) => {
