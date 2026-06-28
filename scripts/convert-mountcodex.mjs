@@ -135,32 +135,40 @@ async function exists(p) {
  * kennt (icon, continent, instance, description, coordinates), bleiben null/leer.
  */
 function makeMount({ id, name, spellId, fields, expansion, patch }) {
-  const missing = []
-  const icon = null
-  const continent = null
-  const instance = null
-  const description = ''
-  const coordinates = null
-  if (!icon) missing.push('icon')
-  if (!continent) missing.push('continent')
-  if (!coordinates) missing.push('coordinates')
+  const sourceText = clean(fields.source)
+  const boss = clean(fields.boss)
+  const type = mapSourceType(fields.source)
+
+  // Händler/Event/Beruf aus den vorhandenen Feldern ableiten (kein Erfinden):
+  // Das Boss-Feld trägt bei diesen Quellen i. d. R. den Händler-/Beruf-/Event-Namen.
+  const vendor = type === 'vendor' ? boss || sourceText : null
+  const profession = type === 'profession' ? boss || sourceText : null
+  const event = type === 'event' ? boss || sourceText : null
+
+  // Statisch nicht vorhanden:
+  const missing = ['icon', 'continent', 'coordinates']
 
   return {
     mount: {
       id,
       name,
       spellId: spellId ?? null,
-      icon,
+      icon: null,
+      iconFileId: null,
       expansion: mapExpansion(expansion || fields.expansion),
-      continent,
+      continent: null,
       zone: clean(fields.zone),
-      source: clean(fields.source),
-      sourceType: mapSourceType(fields.source),
-      boss: clean(fields.boss),
-      instance,
+      source: sourceText,
+      sourceType: type,
+      boss,
+      instance: null,
+      vendor,
+      profession,
+      event,
       patch: patch || null,
-      description,
-      coordinates,
+      rarity: null, // in der WoW-API/Addon-DB nicht vorhanden
+      description: '',
+      coordinates: null,
       faction: mapFaction(fields.faction),
       collected: false,
       favorite: false,
@@ -336,6 +344,35 @@ async function main() {
     mounts.push(mount)
   }
 
+  // 3) Mounts, die NUR in der Expansion-/Patch-DB stehen (kein MountDB-Eintrag).
+  //    Vorher wurden sie ignoriert → das war der Hauptgrund für "nur ~1140".
+  //    Keine künstliche Filterung: jede bekannte mountID kommt rein.
+  let fromExpPatchOnly = 0
+  const allMountIds = new Set([...expansionByMountId.keys(), ...patchByMountId.keys()])
+  for (const num of allMountIds) {
+    if (seen.has(num)) continue // bereits als mount:N vorhanden
+    seen.add(num)
+    const nameEntry = names[String(num)]
+    const resolvedName =
+      (typeof nameEntry === 'object' ? nameEntry.name : nameEntry) || null
+    if (!resolvedName) {
+      unnamed++
+      fieldMissing.name = (fieldMissing.name || 0) + 1
+      if (namedOnly) continue
+    }
+    const { mount, missing } = makeMount({
+      id: num,
+      name: resolvedName || `Reittier #${num}`,
+      spellId: typeof nameEntry === 'object' ? (nameEntry.spellId ?? null) : null,
+      fields: {}, // keine Quellen-Metadaten vorhanden
+      expansion: expansionByMountId.get(num),
+      patch: patchByMountId.get(num) || null,
+    })
+    track(missing)
+    mounts.push(mount)
+    fromExpPatchOnly++
+  }
+
   mounts.sort((a, b) => a.name.localeCompare(b.name))
 
   const output = {
@@ -355,9 +392,11 @@ async function main() {
   console.log('  Dateien:', usedFiles.join(', '))
   console.log(`  Legacy-Namens-Einträge: ${legacy.length}`)
   console.log(`  ID-Einträge:            ${byId.length}`)
+  console.log(`  Nur in Expansion-/PatchDB: ${fromExpPatchOnly}`)
   console.log(`  Ohne Namen:             ${unnamed}${namedOnly ? ' (ausgeschlossen via --named-only)' : ' (als "Reittier #N" aufgenommen)'}`)
   console.log('  Fehlende Felder (Anzahl Mounts):', fieldMissing)
   console.log(`  ✓ Geschrieben: ${mounts.length} Mounts → ${outPath}`)
+  console.log('  Hinweis: Icon/collected nur via /mcexport (C_MountJournal).')
 }
 
 main().catch((e) => {
