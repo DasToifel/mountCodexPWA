@@ -91,7 +91,7 @@ export const SOURCE_LABEL: Record<SourceType, string> = {
 
 /** Kartenkoordinate (WoW-Stil: 0–100 innerhalb der Zone). */
 export interface Coordinates {
-  zone: string
+  zone?: string
   x: number
   y: number
 }
@@ -102,6 +102,7 @@ export interface MountSource {
   boss?: string
   dungeon?: string
   raid?: string
+  instance?: string
   zone?: string
   continent?: string
   dropChance?: number // 0..1
@@ -119,6 +120,8 @@ export interface Mount {
   id: number // WoW-kompatible Mount-ID (für späteren Sync)
   name: string
   description: string
+  spellId?: number // WoW-SpellID (sofern bekannt)
+  icon?: string // WoW-Icon-Name/-Pfad (kommt im Addon aus der API)
   image?: string // URL oder Asset-Pfad; fehlt → prozeduraler Platzhalter
   rarity: Rarity
   expansion: Expansion

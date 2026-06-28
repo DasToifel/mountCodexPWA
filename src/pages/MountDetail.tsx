@@ -104,6 +104,7 @@ export function MountDetail() {
             <RarityBadge rarity={mount.rarity} />
             <MetaPill>{EXPANSION_SHORT[mount.expansion]}</MetaPill>
             {mount.patch && <MetaPill>Patch {mount.patch}</MetaPill>}
+            {mount.spellId != null && <MetaPill>Spell {mount.spellId}</MetaPill>}
             <MetaPill>{FACTION_LABEL[mount.faction]}</MetaPill>
           </div>
         </div>
@@ -193,6 +194,7 @@ function SourceCard({ source }: { source: MountSource }) {
     ['Boss', source.boss],
     ['Dungeon', source.dungeon],
     ['Schlachtzug', source.raid],
+    ['Instanz', source.instance],
     ['Zone', source.zone],
     ['Kontinent', source.continent],
     ['Händler', source.vendor],

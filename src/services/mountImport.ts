@@ -114,19 +114,24 @@ export function normalizeMount(
     ? (r.faction as Faction)
     : 'neutral'
 
+  // Quellen: entweder verschachteltes `sources[]` ODER flaches Schema
+  // (boss/zone/instance/source/coordinates …) – beide werden unterstützt.
   const rawSources = Array.isArray(r.sources) ? r.sources : []
   const sources = rawSources
     .map((s) => normalizeSource(s))
     .filter((s): s is MountSource => s !== null)
 
   if (sources.length === 0) {
-    sources.push({ type: 'worldDrop' })
+    const flat = normalizeFlatSource(r, faction)
+    sources.push(flat)
   }
 
   return {
     id,
     name,
     description: asString(r.description) ?? '',
+    spellId: asNumber(r.spellId),
+    icon: asString(r.icon),
     image: asString(r.image),
     rarity,
     expansion,
@@ -140,6 +145,33 @@ export function normalizeMount(
     ground: asBool(r.ground),
     aquatic: asBool(r.aquatic),
     special: asStringArray(r.special),
+  }
+}
+
+/** Baut eine `MountSource` aus dem flachen Addon-Schema. */
+function normalizeFlatSource(r: Record<string, unknown>, faction: Faction): MountSource {
+  const sourceText = asString(r.source)
+  const type: SourceType = SOURCE_SET.has(r.sourceType as string)
+    ? (r.sourceType as SourceType)
+    : 'worldDrop'
+
+  let coordinates: MountSource['coordinates']
+  if (r.coordinates && typeof r.coordinates === 'object') {
+    const c = r.coordinates as Record<string, unknown>
+    const x = asNumber(c.x)
+    const y = asNumber(c.y)
+    if (x != null && y != null) coordinates = { zone: asString(c.zone) ?? asString(r.zone), x, y }
+  }
+
+  return {
+    type,
+    boss: asString(r.boss),
+    instance: asString(r.instance),
+    zone: asString(r.zone),
+    continent: asString(r.continent),
+    requirement: sourceText,
+    faction,
+    coordinates,
   }
 }
 
